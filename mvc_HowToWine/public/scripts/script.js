@@ -1,9 +1,9 @@
 let rookyLvl = document.querySelector("#cercle1");
 let mediumLvl = document.querySelector("#cercle2");
 let confirmLvl = document.querySelector("#cercle3");
-let rookyContent = document.querySelector(".rookyContent");
-let mediumContent = document.querySelector(".mediumContent");
-let confirmContent = document.querySelector(".confirmContent");
+let rookyContent = document.querySelector(".content1");
+let mediumContent = document.querySelector(".content2");
+let confirmContent = document.querySelector(".content3");
 let cancelBox = document.querySelector(".cancel");
 
 document.querySelectorAll('[name=btcircle]').forEach(function(btcircle){

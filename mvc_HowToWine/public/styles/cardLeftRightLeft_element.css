@@ -1,0 +1,40 @@
+@import url("reset.css");
+@import url("variable.css");
+
+.gridLeftRightLeft{
+    width: 98vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;     
+}
+
+.gridLeftRightLeft :nth-child(1){
+    grid-area: 1 / 1 / 2 / 2;    
+}
+.gridLeftRightLeft :nth-child(2){
+    grid-area: 2 / 2 / 3 / 3;   
+}
+.gridLeftRightLeft :nth-child(3){
+    grid-area: 3 / 1 / 4 / 2;    
+}
+
+.main_cardLeft{
+    padding: 30px;
+    border: solid 1px var(--color-secondary);
+    border-radius: 5px;
+    width: 60vw;
+    background-color:var(--color-gray);
+    margin: 20px;   
+}
+
+.main_cardRight{
+    padding: 30px;
+    border: solid 1px var(--color-secondary);
+    border-radius: 5px;
+    width: 60vw;
+    background-color:var(--color-gray);
+    margin: 20px;
+}
+      

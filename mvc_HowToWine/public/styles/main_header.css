@@ -1,0 +1,11 @@
+#main_headerBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#mainLogo{
+    width: 10rem;
+}
+nav{
+    margin: 2.5rem;
+}

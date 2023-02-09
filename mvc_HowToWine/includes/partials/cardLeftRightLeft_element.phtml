@@ -1,0 +1,23 @@
+<?php 
+    foreach ($lesThemes as $unTheme){
+        if($unTheme->getId()%2){
+            print('<div class="main_cardLeft">');
+                print('<div class="card_TitleLeft">');
+                    print('<h3>'.$unTheme->getName().'</h3>');
+                print('</div>');
+                print('<div class="cardContent">');
+                    print('<p>'.$unTheme->getContenu().'</p>');
+                print('</div>');
+            print('</div>'); 
+        }else{
+            print('<div class="main_cardRight">');
+                print('<div class="card_TitleRight">');
+                    print('<h3>'.$unTheme->getName().'</h3>');
+                print('</div>');
+                print('<div class="cardContent">');
+                    print('<p>'.$unTheme->getContenu().'</p>');
+                print('</div>');
+            print('</div>');  
+        }  
+    }
+    ?>

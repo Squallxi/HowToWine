@@ -1,17 +1,13 @@
+@font-face {
+  font-family: "Inter";
+  src:url('../font/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+}
 /* ============================== */
 /* =========== REBOOT =========== */
 /* ============================== */
 *, *::before, *::after {
+    font-family: Inter;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  ul, li {
     margin: 0;
     padding: 0;
   }

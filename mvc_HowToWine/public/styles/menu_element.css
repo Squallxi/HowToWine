@@ -114,19 +114,15 @@ p{
     animation: appear 1.5s ease 0s 1 normal forwards;
 }
 
-.rookyContent{
+.content1{
     display: none;
     top: 0;
 }
-.mediumContent{
+.content2{
     display: none;
     top: 0;
 }
-.confirmContent{
-    display: none;
-    top: 0;
-}
-.proContent{
+.content3{
     display: none;
     top: 0;
 }

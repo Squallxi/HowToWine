@@ -141,10 +141,16 @@ CREATE TABLE `chapitre` (
   `nom_chapitre` varchar(100) NOT NULL,
   `contenu` longtext NOT NULL,
   `id_lecon` int(11) NOT NULL,
+  `id_niveau` int(11) NOT NULL,
+  `id_theme` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `chapitre_FK` (`id_lecon`),
-  CONSTRAINT `chapitre_FK` FOREIGN KEY (`id_lecon`) REFERENCES `lecon` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  KEY `chapitre_FK_1` (`id_theme`),
+  KEY `chapitre_FK_2` (`id_niveau`),
+  CONSTRAINT `chapitre_FK` FOREIGN KEY (`id_lecon`) REFERENCES `lecon` (`id`),
+  CONSTRAINT `chapitre_FK_1` FOREIGN KEY (`id_theme`) REFERENCES `themes` (`id`),
+  CONSTRAINT `chapitre_FK_2` FOREIGN KEY (`id_niveau`) REFERENCES `niveau` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +159,7 @@ CREATE TABLE `chapitre` (
 
 LOCK TABLES `chapitre` WRITE;
 /*!40000 ALTER TABLE `chapitre` DISABLE KEYS */;
-INSERT INTO `chapitre` VALUES (1,'Niveau amateur','Au niveau débutant, nous verrons les grandes étapes de l\'élaboration d\'un vin selon votre choix rouge, blanc et rosé. Avec quelques termes techniques incontournables mais sans entrer dans le détail. Il existe autant de manière de faire un vin que de nom de domaine dans le monde donc nous resterons sur les vins tranquille et sec pour commencer. De futur sections seront crée spécifiquement pour les autres catégorie de vin.',1),(2,'Niveau étudiant','Le niveau étudiant est là pour consolidé les bases et aller plus loin dans le développement des connaissances et pratiques.',1),(3,'Niveau Professionnel','Le niveau professionnel fournira quelques méthodes et outils pour vous aider tout au long de votre parcours.',1),(4,'Produire du vin rouge','Dans cette section, vous verrez comment est produit un vin rouge de A à Z.',1),(5,'Produire du vin blanc','Dans cette section, vous verrez comment est produit un vin blanc de A à Z.',1),(6,'produire du vin rosé','Dans cette section, vous verrez comment est produit un vin rosé de A à Z.',1),(7,'<h1>Qu\'est-ce que le vin ?</h1>','<p>Le vin est le produit de la transformation du jus de raisin en alcool. Des organismes microscopiques appelées levures vont venir dégrader les sucres contenu dans le jus en alcool, on parle alors de fermentation alcoolique.</p><br><p>Bien entendu, une multitude d\'étapes et de facteurs vont venir modifier ou altérer l\'élaboration du vinpour permettre aux producteurs de faire un vin qui correspondra à l\'identité d\'une marque, d\'une appellation et surtout d\'un terroir.</p>',1),(9,'<h2>Les vendanges</h2>','<p>La récolte du raisin est une étape crucial pour tout producteur. Une des valeurs les plus précieuses est le niveau de maturité. En effet, la maturité du raisin va déterminer en parti le style de vin visé. La maturité peut être suivi à l\'aide de prélèvement de baies et diverses analyses effectué le plus souvent en laboratoire œnologique. Le facteur météo est aussi un élément clé pour éviter des dégradations de la vendange.</p><br><p>Le schéma suivante donne une idée du moment de la récolte dans le temps selon le style de vin :</p><img src=\"\" alt=\"\"><p>Bien, maintenant que le niveau de maturité souhaité est atteint, il faut acheminer la récolte au chai ou le raisin pourra être vinifié.</p>',1),(10,'<h2>L\'encuvage</h2>','<p>Avant toute chose, le raisin va subir des opérations pour permettre plus tard de mieux le travailler. Le tri, directement à la vigne et parfois au chai, le raisin va être mis en œuvre une voir plusieurs fois. Le but étant d\'écarter tout corps étrangers(feuilles, bois de vigne etc...), baies rosé(qui manque de maturité) ou encore pourries.</p><br><span>plusieurs exemple de tri :<span><br><ul><li>- manuel</li><li>- mécanique</li> <li>- optique</li></ul><p>L\'éraflage qui consiste à séprarer les rafles des baies n\'est pas obligatoire mais très souvent employé pour éviter tout côté herbacé dans le produit final.</p><p>Le foulage aujourd\'hui mécanisé et anciennement fait avec nos pieds est l\'action qui va écraser le raisin pour qu\'il puisse libérer tout ces composés et donc améliorer l\'extraction par la suite.</p><p>Le sulfitage non obligatoire également. Juste avant l\'encuvage, le sulfitage de la vendange permet toutefois d\'avoir un meilleur contrôle sur le démarrage des fermentations à ce stade.</p>',1),(11,'<h2>La vinification<h2>','<p>Les vinification démarre par la fermentation alcoolique par le biais des levures. Une des pratique consiste à faire ce que l\'on appelle \"un pied de cuve\", on laisse les levures dites \"indigènes\" présentent sur la pellicule du raisin  ou bien par ensemencement de levure sèche active(LSA).</p><p>L\'ensemencement est une méthode plus onéreuse mais présente toutefois l\'avantage de sélectionner l\'espèce de levure qui va coloniser le milieu.Ces levures avec des propriétés bien spécifique pourront si les conditions sont réunis mener à bien la fermentation.</p><p>En rouge, une deuxième fermentation sera effectué, la fermentation malolactique. Elle permet d\'adoucir les vins rouge.Une fois les fermentations terminés, nous pouvons alors parler de vin à cette étape de l\'élaboration.',1),(12,'<h2>Les écoulages<h2>','<p>Une fois les vinifications terminés, le vin va être séparé de la parti solide(pellicules et pépins majoritairement). On écoule alors le liquide que l\'on appelle vin de goutte dans un nouveau contenant. En rouge on presse le marc(parti solide) pour extraire les jus encore prisonnier à l\'intérieur. Ces jus présentent un intérêt non négligeable puisqu\'il sont en général très concentrés et peuvent donc plus tard être assemblé au vin de goutte. ',1),(13,'<h2>L\'élevage</h2>','<p>L\'élevage est la dernière ligne droite avant la mise en bouteille. Le temps d\'élevage varie en fonction du type/style de vin allant de quelque mois à plus d\'un an. Pendant cette période les vins vont être clarifié et stabilisé via diverses méthode.</p><br><p>Le soutirage consiste à séparer le vin clair des lies qui ont déposer au fond du contenant. Cet action est réalisé plusieurs fois afin d\'éliminer les impuretés mais aussi les micro-organismes qui pourrait venir attaquer le vin.</p><br><p>Vers la fin de l\'élevage, les vins vont être \"coller\". Le collage est une action qui consiste à incorporé le plus souvent de l\'albumine(blanc d’œuf) pour faire précipité les cristaux de tartre. De nos jour l’exigence du consommateur pousse les producteurs à rendre le produit final le plus présentable possible. Les dépôts que l\'on peut rencontrer dans la bouteille bien qu\'inoffensif sont donc en parti évité par ces méthodes.</p>',1);
+INSERT INTO `chapitre` VALUES (1,'<h1>Qu\'est-ce que le vin ?</h1>','<p>Le vin est le produit de la transformation du jus de raisin en alcool. Des organismes microscopiques appelées levures vont venir dégrader les sucres contenu dans le jus en alcool, on parle alors de fermentation alcoolique.</p><br><p>Bien entendu, une multitude d\'étapes et de facteurs vont venir modifier ou altérer l\'élaboration du vinpour permettre aux producteurs de faire un vin qui correspondra à l\'identité d\'une marque, d\'une appellation et surtout d\'un terroir.</p>',1,1,1),(9,'<h2>Les vendanges</h2>','<p>La récolte du raisin est une étape crucial pour tout producteur. Une des valeurs les plus précieuses est le niveau de maturité. En effet, la maturité du raisin va déterminer en parti le style de vin visé. La maturité peut être suivi à l\'aide de prélèvement de baies et diverses analyses effectué le plus souvent en laboratoire œnologique. Le facteur météo est aussi un élément clé pour éviter des dégradations de la vendange.</p><br><p>Le schéma suivante donne une idée du moment de la récolte dans le temps selon le style de vin :</p><img src=\"\" alt=\"\"><p>Bien, maintenant que le niveau de maturité souhaité est atteint, il faut acheminer la récolte au chai ou le raisin pourra être vinifié.</p>',1,1,1),(10,'<h2>L\'encuvage</h2>','<p>Avant toute chose, le raisin va subir des opérations pour permettre plus tard de mieux le travailler. Le tri, directement à la vigne et parfois au chai, le raisin va être mis en œuvre une voir plusieurs fois. Le but étant d\'écarter tout corps étrangers(feuilles, bois de vigne etc...), baies rosé(qui manque de maturité) ou encore pourries.</p><br><span>plusieurs exemple de tri :<span><br><ul><li>- manuel</li><li>- mécanique</li> <li>- optique</li></ul><p>L\'éraflage qui consiste à séprarer les rafles des baies n\'est pas obligatoire mais très souvent employé pour éviter tout côté herbacé dans le produit final.</p><p>Le foulage aujourd\'hui mécanisé et anciennement fait avec nos pieds est l\'action qui va écraser le raisin pour qu\'il puisse libérer tout ces composés et donc améliorer l\'extraction par la suite.</p><p>Le sulfitage non obligatoire également. Juste avant l\'encuvage, le sulfitage de la vendange permet toutefois d\'avoir un meilleur contrôle sur le démarrage des fermentations à ce stade.</p>',1,1,1),(11,'<h2>La vinification<h2>','<p>Les vinification démarre par la fermentation alcoolique par le biais des levures. Une des pratique consiste à faire ce que l\'on appelle \"un pied de cuve\", on laisse les levures dites \"indigènes\" présentent sur la pellicule du raisin  ou bien par ensemencement de levure sèche active(LSA).</p><p>L\'ensemencement est une méthode plus onéreuse mais présente toutefois l\'avantage de sélectionner l\'espèce de levure qui va coloniser le milieu.Ces levures avec des propriétés bien spécifique pourront si les conditions sont réunis mener à bien la fermentation.</p><p>En rouge, une deuxième fermentation sera effectué, la fermentation malolactique. Elle permet d\'adoucir les vins rouge.Une fois les fermentations terminés, nous pouvons alors parler de vin à cette étape de l\'élaboration.',1,1,1),(12,'<h2>Les écoulages<h2>','<p>Une fois les vinifications terminés, le vin va être séparé de la parti solide(pellicules et pépins majoritairement). On écoule alors le liquide que l\'on appelle vin de goutte dans un nouveau contenant. En rouge on presse le marc(parti solide) pour extraire les jus encore prisonnier à l\'intérieur. Ces jus présentent un intérêt non négligeable puisqu\'il sont en général très concentrés et peuvent donc plus tard être assemblé au vin de goutte. ',1,1,1),(13,'<h2>L\'élevage</h2>','<p>L\'élevage est la dernière ligne droite avant la mise en bouteille. Le temps d\'élevage varie en fonction du type/style de vin allant de quelque mois à plus d\'un an. Pendant cette période les vins vont être clarifié et stabilisé via diverses méthode.</p><br><p>Le soutirage consiste à séparer le vin clair des lies qui ont déposer au fond du contenant. Cet action est réalisé plusieurs fois afin d\'éliminer les impuretés mais aussi les micro-organismes qui pourrait venir attaquer le vin.</p><br><p>Vers la fin de l\'élevage, les vins vont être \"coller\". Le collage est une action qui consiste à incorporé le plus souvent de l\'albumine(blanc d’œuf) pour faire précipité les cristaux de tartre. De nos jour l’exigence du consommateur pousse les producteurs à rendre le produit final le plus présentable possible. Les dépôts que l\'on peut rencontrer dans la bouteille bien qu\'inoffensif sont donc en parti évité par ces méthodes.</p>',1,1,1),(19,'Produire du vin rouge','Dans cette section, vous verrez comment est produit un vin rouge de A à Z.',1,1,1),(20,'Produire du vin blanc','Dans cette section, vous verrez comment est produit un vin blanc de A à Z.',1,1,1),(21,'produire du vin rosé','Dans cette section, vous verrez comment est produit un vin rosé de A à Z.',1,1,1);
 /*!40000 ALTER TABLE `chapitre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -491,6 +497,31 @@ LOCK TABLES `millesime` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `niveau`
+--
+
+DROP TABLE IF EXISTS `niveau`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `niveau` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_niveau` varchar(100) NOT NULL,
+  `contenu` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `niveau`
+--
+
+LOCK TABLES `niveau` WRITE;
+/*!40000 ALTER TABLE `niveau` DISABLE KEYS */;
+INSERT INTO `niveau` VALUES (1,'Niveau Amateur','Au niveau débutant, nous verrons les grandes étapes de l\'élaboration d\'un vin selon votre choix rouge, blanc et rosé. Avec quelques termes techniques incontournables mais sans entrer dans le détail. Il existe autant de manière de faire un vin que de nom de domaine dans le monde donc nous resterons sur les vins tranquille et sec pour commencer. De futur sections seront crée spécifiquement pour les autres catégorie de vin.'),(2,'Niveau Étudiant','Le niveau étudiant est là pour consolidé les bases et aller plus loin dans le développement des connaissances et pratiques.'),(3,'Niveau Professionnel','Le niveau professionnel fournira quelques méthodes et outils pour vous aider tout au long de votre parcours.');
+/*!40000 ALTER TABLE `niveau` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `organisme_vin`
 --
 
@@ -719,6 +750,31 @@ LOCK TABLES `tailler` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `themes`
+--
+
+DROP TABLE IF EXISTS `themes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `themes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_theme` varchar(100) NOT NULL,
+  `theme_contenu` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `themes`
+--
+
+LOCK TABLES `themes` WRITE;
+/*!40000 ALTER TABLE `themes` DISABLE KEYS */;
+INSERT INTO `themes` VALUES (1,' Thème de l\'Œnologie','Du début des vendanges à la mise en bouteille, retrouvez les étapes incontournables de l\'élaboration d\'un vin. '),(2,'Thème de la Viticulture','La culture de la vigne nécessite une adaptation à toutes épreuves. A chaque saison, retrouvez les bonnes pratiques nécessaires à la bonne conduite d\'un vignoble.'),(3,'Thème de la Dégustation','La dégustation est une valeur essentielle pour tout producteur qui se respect. Il est un des facteurs de prise de décision qui peut faire la différence entre un vin d\'exception et un vin correct.');
+/*!40000 ALTER TABLE `themes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `vin`
 --
 
@@ -823,4 +879,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-09  9:02:38
+-- Dump completed on 2023-02-09 17:10:07

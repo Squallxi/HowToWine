@@ -9,7 +9,10 @@
     --color-red: #FF0000;
     --color-white: #fff;
     --color-gray: #bbb;
-    --typo: 'Poppins', sans-serif;
+    --title-size: 2.5rem;
+    --title-weight:700;
+    --subTitle-size:2rem;
+    --text-size:1rem;
     --max-width: 1024px;
   }
 

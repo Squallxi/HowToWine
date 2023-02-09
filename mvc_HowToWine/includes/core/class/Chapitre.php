@@ -1,13 +1,16 @@
 <?php
 
 	class Chapitre{
-		private int $id, $idLecon;
+		private int $id, $idLecon, $idNiveau, $idTheme;
 		private string $nomChapitre, $Contenu;
 
-		public function __construct(string $nomChapitre = '', string $Contenu = '', int $idLecon = 0){
+		public function __construct(string $nomChapitre = '', string $Contenu = '', int $idLecon = 0, int $idNiveau = 0,
+		int $idTheme = 0){
 				$this->nomChapitre = $nomChapitre;
 				$this->Contenu = $Contenu;
 				$this->idLecon = $idLecon;
+				$this->idNiveau = $idNiveau;
+				$this->idTheme = $idTheme;
 		}
 
 		public function getId(): int{
@@ -40,5 +43,19 @@
 
 		public function setIdLecon(int $idLecon): void{
 			$this->idLecon = $idLecon;
+		}
+		public function getIdNiveau(): int{
+			return $this->idNiveau;
+		}
+
+		public function setIdNiveau(int $idNiveau): void{
+			$this->idNiveau = $idNiveau;
+		}
+		public function getIdTheme(): int{
+			return $this->idTheme;
+		}
+
+		public function setIdTheme(int $idTheme): void{
+			$this->idTheme = $idTheme;
 		}
 	}

@@ -1,8 +1,0 @@
-@import url("reset.css");
-@import url("variable.css");
-
-.main_cardRight{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
