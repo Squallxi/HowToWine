@@ -1,0 +1,15 @@
+/* ============================== */
+/* ========== VARIABLES ========= */
+/* ============================== */
+:root {
+    --color-primary: #800033;
+    --color-secondary: #faea73;
+    --color-green:#008000;
+    --color-black: #000000;
+    --color-red: #FF0000;
+    --color-white: #fff;
+    --color-gray: #bbb;
+    --typo: 'Poppins', sans-serif;
+    --max-width: 1024px;
+  }
+

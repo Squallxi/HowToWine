@@ -16,6 +16,91 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `aborder`
+--
+
+DROP TABLE IF EXISTS `aborder`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `aborder` (
+  `id_question` int(11) NOT NULL,
+  `id_viticulture` int(11) NOT NULL,
+  `id_elevage` int(11) NOT NULL,
+  `id_vinification` int(11) NOT NULL,
+  KEY `aborder_FK` (`id_question`),
+  KEY `aborder_FK_1` (`id_vinification`),
+  KEY `aborder_FK_2` (`id_elevage`),
+  KEY `aborder_FK_3` (`id_viticulture`),
+  CONSTRAINT `aborder_FK` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`),
+  CONSTRAINT `aborder_FK_1` FOREIGN KEY (`id_vinification`) REFERENCES `vinification` (`id`),
+  CONSTRAINT `aborder_FK_2` FOREIGN KEY (`id_elevage`) REFERENCES `elevage` (`id`),
+  CONSTRAINT `aborder_FK_3` FOREIGN KEY (`id_viticulture`) REFERENCES `viticulture` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `aborder`
+--
+
+LOCK TABLES `aborder` WRITE;
+/*!40000 ALTER TABLE `aborder` DISABLE KEYS */;
+/*!40000 ALTER TABLE `aborder` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `associer`
+--
+
+DROP TABLE IF EXISTS `associer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `associer` (
+  `id_question` int(11) NOT NULL,
+  `id_reponses` int(11) NOT NULL,
+  KEY `associer_FK` (`id_reponses`),
+  KEY `associer_FK_1` (`id_question`),
+  CONSTRAINT `associer_FK` FOREIGN KEY (`id_reponses`) REFERENCES `reponses` (`id`),
+  CONSTRAINT `associer_FK_1` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `associer`
+--
+
+LOCK TABLES `associer` WRITE;
+/*!40000 ALTER TABLE `associer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `associer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `associer_couleur`
+--
+
+DROP TABLE IF EXISTS `associer_couleur`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `associer_couleur` (
+  `id_chapitre` int(11) NOT NULL,
+  `id_couleur` int(11) NOT NULL,
+  KEY `associer_couleur_FK` (`id_chapitre`),
+  KEY `associer_couleur_FK_1` (`id_couleur`),
+  CONSTRAINT `associer_couleur_FK` FOREIGN KEY (`id_chapitre`) REFERENCES `chapitre` (`id`),
+  CONSTRAINT `associer_couleur_FK_1` FOREIGN KEY (`id_couleur`) REFERENCES `couleur` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `associer_couleur`
+--
+
+LOCK TABLES `associer_couleur` WRITE;
+/*!40000 ALTER TABLE `associer_couleur` DISABLE KEYS */;
+INSERT INTO `associer_couleur` VALUES (9,1),(10,1),(11,1),(12,1),(13,1);
+/*!40000 ALTER TABLE `associer_couleur` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cepage`
 --
 
@@ -53,8 +138,13 @@ DROP TABLE IF EXISTS `chapitre`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `chapitre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nom_chapitre` varchar(100) NOT NULL,
+  `contenu` longtext NOT NULL,
+  `id_lecon` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chapitre_FK` (`id_lecon`),
+  CONSTRAINT `chapitre_FK` FOREIGN KEY (`id_lecon`) REFERENCES `lecon` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +153,7 @@ CREATE TABLE `chapitre` (
 
 LOCK TABLES `chapitre` WRITE;
 /*!40000 ALTER TABLE `chapitre` DISABLE KEYS */;
+INSERT INTO `chapitre` VALUES (1,'Niveau amateur','Au niveau débutant, nous verrons les grandes étapes de l\'élaboration d\'un vin selon votre choix rouge, blanc et rosé. Avec quelques termes techniques incontournables mais sans entrer dans le détail. Il existe autant de manière de faire un vin que de nom de domaine dans le monde donc nous resterons sur les vins tranquille et sec pour commencer. De futur sections seront crée spécifiquement pour les autres catégorie de vin.',1),(2,'Niveau étudiant','Le niveau étudiant est là pour consolidé les bases et aller plus loin dans le développement des connaissances et pratiques.',1),(3,'Niveau Professionnel','Le niveau professionnel fournira quelques méthodes et outils pour vous aider tout au long de votre parcours.',1),(4,'Produire du vin rouge','Dans cette section, vous verrez comment est produit un vin rouge de A à Z.',1),(5,'Produire du vin blanc','Dans cette section, vous verrez comment est produit un vin blanc de A à Z.',1),(6,'produire du vin rosé','Dans cette section, vous verrez comment est produit un vin rosé de A à Z.',1),(7,'<h1>Qu\'est-ce que le vin ?</h1>','<p>Le vin est le produit de la transformation du jus de raisin en alcool. Des organismes microscopiques appelées levures vont venir dégrader les sucres contenu dans le jus en alcool, on parle alors de fermentation alcoolique.</p><br><p>Bien entendu, une multitude d\'étapes et de facteurs vont venir modifier ou altérer l\'élaboration du vinpour permettre aux producteurs de faire un vin qui correspondra à l\'identité d\'une marque, d\'une appellation et surtout d\'un terroir.</p>',1),(9,'<h2>Les vendanges</h2>','<p>La récolte du raisin est une étape crucial pour tout producteur. Une des valeurs les plus précieuses est le niveau de maturité. En effet, la maturité du raisin va déterminer en parti le style de vin visé. La maturité peut être suivi à l\'aide de prélèvement de baies et diverses analyses effectué le plus souvent en laboratoire œnologique. Le facteur météo est aussi un élément clé pour éviter des dégradations de la vendange.</p><br><p>Le schéma suivante donne une idée du moment de la récolte dans le temps selon le style de vin :</p><img src=\"\" alt=\"\"><p>Bien, maintenant que le niveau de maturité souhaité est atteint, il faut acheminer la récolte au chai ou le raisin pourra être vinifié.</p>',1),(10,'<h2>L\'encuvage</h2>','<p>Avant toute chose, le raisin va subir des opérations pour permettre plus tard de mieux le travailler. Le tri, directement à la vigne et parfois au chai, le raisin va être mis en œuvre une voir plusieurs fois. Le but étant d\'écarter tout corps étrangers(feuilles, bois de vigne etc...), baies rosé(qui manque de maturité) ou encore pourries.</p><br><span>plusieurs exemple de tri :<span><br><ul><li>- manuel</li><li>- mécanique</li> <li>- optique</li></ul><p>L\'éraflage qui consiste à séprarer les rafles des baies n\'est pas obligatoire mais très souvent employé pour éviter tout côté herbacé dans le produit final.</p><p>Le foulage aujourd\'hui mécanisé et anciennement fait avec nos pieds est l\'action qui va écraser le raisin pour qu\'il puisse libérer tout ces composés et donc améliorer l\'extraction par la suite.</p><p>Le sulfitage non obligatoire également. Juste avant l\'encuvage, le sulfitage de la vendange permet toutefois d\'avoir un meilleur contrôle sur le démarrage des fermentations à ce stade.</p>',1),(11,'<h2>La vinification<h2>','<p>Les vinification démarre par la fermentation alcoolique par le biais des levures. Une des pratique consiste à faire ce que l\'on appelle \"un pied de cuve\", on laisse les levures dites \"indigènes\" présentent sur la pellicule du raisin  ou bien par ensemencement de levure sèche active(LSA).</p><p>L\'ensemencement est une méthode plus onéreuse mais présente toutefois l\'avantage de sélectionner l\'espèce de levure qui va coloniser le milieu.Ces levures avec des propriétés bien spécifique pourront si les conditions sont réunis mener à bien la fermentation.</p><p>En rouge, une deuxième fermentation sera effectué, la fermentation malolactique. Elle permet d\'adoucir les vins rouge.Une fois les fermentations terminés, nous pouvons alors parler de vin à cette étape de l\'élaboration.',1),(12,'<h2>Les écoulages<h2>','<p>Une fois les vinifications terminés, le vin va être séparé de la parti solide(pellicules et pépins majoritairement). On écoule alors le liquide que l\'on appelle vin de goutte dans un nouveau contenant. En rouge on presse le marc(parti solide) pour extraire les jus encore prisonnier à l\'intérieur. Ces jus présentent un intérêt non négligeable puisqu\'il sont en général très concentrés et peuvent donc plus tard être assemblé au vin de goutte. ',1),(13,'<h2>L\'élevage</h2>','<p>L\'élevage est la dernière ligne droite avant la mise en bouteille. Le temps d\'élevage varie en fonction du type/style de vin allant de quelque mois à plus d\'un an. Pendant cette période les vins vont être clarifié et stabilisé via diverses méthode.</p><br><p>Le soutirage consiste à séparer le vin clair des lies qui ont déposer au fond du contenant. Cet action est réalisé plusieurs fois afin d\'éliminer les impuretés mais aussi les micro-organismes qui pourrait venir attaquer le vin.</p><br><p>Vers la fin de l\'élevage, les vins vont être \"coller\". Le collage est une action qui consiste à incorporé le plus souvent de l\'albumine(blanc d’œuf) pour faire précipité les cristaux de tartre. De nos jour l’exigence du consommateur pousse les producteurs à rendre le produit final le plus présentable possible. Les dépôts que l\'on peut rencontrer dans la bouteille bien qu\'inoffensif sont donc en parti évité par ces méthodes.</p>',1);
 /*!40000 ALTER TABLE `chapitre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,6 +187,32 @@ LOCK TABLES `clones` WRITE;
 /*!40000 ALTER TABLE `clones` DISABLE KEYS */;
 INSERT INTO `clones` VALUES (1,'181','1973','Gironde',1,1),(2,'182','1973','Gironde',1,1),(3,'184','1973','Gironde',1,1),(4,'314','1973','Gironde',1,1),(5,'342','1975','Gironde',1,1),(6,'1125','2009','Gironde',2,4),(7,'1124','2009','Gironde',2,4),(8,'685','1980','Pyrénées-Atlantiques',2,5),(9,'412','1976','Gironde',2,5),(10,'411','1976','Gironde',2,5),(11,'410','1976','Gironde',2,5),(12,'341','1975','Gironde',2,1),(13,'338','1975','Gironde',2,1),(14,'337','1975','Gironde',2,1),(15,'269','1973','Gironde',2,5),(16,'267','1973','Gironde',2,5),(17,'219','1973','Val-de-Loire',2,5),(19,'218','1973','Gironde',2,5),(20,'217','1973','Val-de-Loire',2,5),(21,'216','1973','Val-de-Loire',2,5),(22,'191','1973','Gironde',2,1),(23,'170','1972','Val-de-Loire',2,5),(24,'169','1972','Gironde',2,5),(25,'15','1971','Gironde',2,5);
 /*!40000 ALTER TABLE `clones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `composer`
+--
+
+DROP TABLE IF EXISTS `composer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `composer` (
+  `id_questionnaire` int(11) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  KEY `composer_FK` (`id_questionnaire`),
+  KEY `composer_FK_1` (`id_question`),
+  CONSTRAINT `composer_FK` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaire` (`id`),
+  CONSTRAINT `composer_FK_1` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `composer`
+--
+
+LOCK TABLES `composer` WRITE;
+/*!40000 ALTER TABLE `composer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `composer` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -189,10 +306,13 @@ DROP TABLE IF EXISTS `cultiver`;
 CREATE TABLE `cultiver` (
   `id_pays` int(11) NOT NULL,
   `id_cepage` int(11) NOT NULL,
+  `id_viticulture` int(11) NOT NULL,
   KEY `cultiver_FK` (`id_cepage`),
   KEY `cultiver_FK_1` (`id_pays`),
+  KEY `cultiver_FK_2` (`id_viticulture`),
   CONSTRAINT `cultiver_FK` FOREIGN KEY (`id_cepage`) REFERENCES `cepage` (`id`),
-  CONSTRAINT `cultiver_FK_1` FOREIGN KEY (`id_pays`) REFERENCES `pays` (`id`)
+  CONSTRAINT `cultiver_FK_1` FOREIGN KEY (`id_pays`) REFERENCES `pays` (`id`),
+  CONSTRAINT `cultiver_FK_2` FOREIGN KEY (`id_viticulture`) REFERENCES `viticulture` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -276,56 +396,6 @@ LOCK TABLES `elever` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `evaluer`
---
-
-DROP TABLE IF EXISTS `evaluer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `evaluer` (
-  `id_personne` int(11) NOT NULL,
-  `id_exercices` int(11) NOT NULL,
-  KEY `evaluer_FK` (`id_personne`),
-  KEY `evaluer_FK_1` (`id_exercices`),
-  CONSTRAINT `evaluer_FK` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`),
-  CONSTRAINT `evaluer_FK_1` FOREIGN KEY (`id_exercices`) REFERENCES `exercices` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `evaluer`
---
-
-LOCK TABLES `evaluer` WRITE;
-/*!40000 ALTER TABLE `evaluer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `evaluer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `exercices`
---
-
-DROP TABLE IF EXISTS `exercices`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `exercices` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sujet` varchar(100) NOT NULL,
-  `question` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `exercices`
---
-
-LOCK TABLES `exercices` WRITE;
-/*!40000 ALTER TABLE `exercices` DISABLE KEYS */;
-/*!40000 ALTER TABLE `exercices` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `forme`
 --
 
@@ -359,9 +429,8 @@ DROP TABLE IF EXISTS `lecon`;
 CREATE TABLE `lecon` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(200) NOT NULL,
-  `contenu` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -370,7 +439,7 @@ CREATE TABLE `lecon` (
 
 LOCK TABLES `lecon` WRITE;
 /*!40000 ALTER TABLE `lecon` DISABLE KEYS */;
-INSERT INTO `lecon` VALUES (1,'Le sulfitage','Le sulfitage est une pratique très répandu dans l\'élaboration d\'un vin bien qu\'elle ne soit pas obligatoire. Elle est bénéfique sur plusieur plan lorsque vous voulez vous assurer de la protection de vos vins.');
+INSERT INTO `lecon` VALUES (1,'L\'oenologie'),(2,'La viticulture'),(3,'La dégustation');
 /*!40000 ALTER TABLE `lecon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,29 +574,95 @@ LOCK TABLES `personne` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `reponse`
+-- Table structure for table `question`
 --
 
-DROP TABLE IF EXISTS `reponse`;
+DROP TABLE IF EXISTS `question`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `reponse` (
+CREATE TABLE `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_exercices` int(11) NOT NULL,
-  `reponse` text NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `reponse_FK` (`id_exercices`),
-  CONSTRAINT `reponse_FK` FOREIGN KEY (`id_exercices`) REFERENCES `exercices` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `reponse`
+-- Dumping data for table `question`
 --
 
-LOCK TABLES `reponse` WRITE;
-/*!40000 ALTER TABLE `reponse` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reponse` ENABLE KEYS */;
+LOCK TABLES `question` WRITE;
+/*!40000 ALTER TABLE `question` DISABLE KEYS */;
+/*!40000 ALTER TABLE `question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `questionnaire`
+--
+
+DROP TABLE IF EXISTS `questionnaire`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `questionnaire` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `questionnaire`
+--
+
+LOCK TABLES `questionnaire` WRITE;
+/*!40000 ALTER TABLE `questionnaire` DISABLE KEYS */;
+/*!40000 ALTER TABLE `questionnaire` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `repondre`
+--
+
+DROP TABLE IF EXISTS `repondre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `repondre` (
+  `id_personne` int(11) NOT NULL,
+  `id_reponses` int(11) NOT NULL,
+  KEY `evaluer_FK` (`id_personne`),
+  KEY `evaluer_FK_1` (`id_reponses`),
+  CONSTRAINT `evaluer_FK` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`),
+  CONSTRAINT `repondre_FK` FOREIGN KEY (`id_reponses`) REFERENCES `reponses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `repondre`
+--
+
+LOCK TABLES `repondre` WRITE;
+/*!40000 ALTER TABLE `repondre` DISABLE KEYS */;
+/*!40000 ALTER TABLE `repondre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reponses`
+--
+
+DROP TABLE IF EXISTS `reponses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reponses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reponses`
+--
+
+LOCK TABLES `reponses` WRITE;
+/*!40000 ALTER TABLE `reponses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reponses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -555,6 +690,32 @@ LOCK TABLES `taille` WRITE;
 /*!40000 ALTER TABLE `taille` DISABLE KEYS */;
 INSERT INTO `taille` VALUES (1,'Taille en gobelet','En échalas ou sans palissage, la taille en gobelet est formé sur plusieurs bras en forme de chandelier sur lesquels reposent 1 à 2 coursons à leurs extremités.','Il permet une bonne résistance au vent et à la sécheresse. Les raisins sont près du sol ce qui assure une maturité précoce.','Cette forme de conduite est mal adaptée à la mécanisation. Elle induit également une mauvaise diffusion des produits de traitement pour pénétrer notamment à l’intérieur des bras.'),(2,'Taille en cordon de Royat','La taille en cordon de Royat repose sur deux bois(charpente) formé dès les premières années de croissance sur lesquels reposent plusieurs courson(cot) équidistant.','Bonne répartition de la vendange et homogénéité de la maturité. Procure une bonne ventilation de la végétation également.','Nécessite de reformer le pied au bout d\'un certain nombre d\'année car les coursons surélève le pied petit à petit.'),(3,'Taille guyot simple','La vigne est taillé sur un long bois pouvant aller de 4 à 10 bourgeons(yeux) dépendant de la capacité du pied à pouvoir recevoir une charge plus importante.','Offre une bonne capacité de rendement. ','Type de taille sollicitant énormement le végétal et peux occasionner un manque d\'homogénéité au niveau de la maturité si celui-çi est trop faible.'),(4,'Taille guyot double','La charge est réparti sur deux bois(baguette) avec 3 à 4 bourgeons(yeux) dépendant de la capacité du pied à pouvoir recevoir une charge plus importante.','Offre une bonne capacité de rendement. ','Type de taille sollicitant énormement le végétal et peux occasionner un manque d\'homogénéité au niveau de la maturité si celui-çi est trop faible.');
 /*!40000 ALTER TABLE `taille` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tailler`
+--
+
+DROP TABLE IF EXISTS `tailler`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tailler` (
+  `id_taille` int(11) NOT NULL,
+  `id_viticulture` int(11) NOT NULL,
+  KEY `tailler_FK` (`id_taille`),
+  KEY `tailler_FK_1` (`id_viticulture`),
+  CONSTRAINT `tailler_FK` FOREIGN KEY (`id_taille`) REFERENCES `taille` (`id`),
+  CONSTRAINT `tailler_FK_1` FOREIGN KEY (`id_viticulture`) REFERENCES `viticulture` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tailler`
+--
+
+LOCK TABLES `tailler` WRITE;
+/*!40000 ALTER TABLE `tailler` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tailler` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -628,6 +789,28 @@ LOCK TABLES `vinifier` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `viticulture`
+--
+
+DROP TABLE IF EXISTS `viticulture`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `viticulture` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `viticulture`
+--
+
+LOCK TABLES `viticulture` WRITE;
+/*!40000 ALTER TABLE `viticulture` DISABLE KEYS */;
+/*!40000 ALTER TABLE `viticulture` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping routines for database 'howtowine'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -640,4 +823,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-03 15:40:33
+-- Dump completed on 2023-02-09  9:02:38

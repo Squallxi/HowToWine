@@ -1,0 +1,162 @@
+@import url("reset.css");
+@import url("variable.css");
+#demiCercle{
+    position: relative;
+    background-color: rgb(129, 40, 61);
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    animation: rotateMenu 2s ease 0s 1 normal forwards;
+    left: -217PX;
+}
+#cercle1{
+    position: absolute;
+    display: inline-block;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    left: 255px;
+    TOP: 45px;   
+}
+#cercle2{
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    left: 290px;
+    TOP: 140px;
+    
+    
+}
+#cercle3{
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    left: 260px;
+    TOP: 230px;
+    
+    
+}
+span{
+    user-select: none;
+    width: 240px;
+    animation: appear 3s ease 0s 1 normal forwards;
+}
+.chooseMenu{
+    position: absolute;
+    left: 30px;
+}
+p{
+    margin: 5px;
+}
+@keyframes rotateMenu{
+    from{
+        transform: rotate(-180deg);
+    }
+    to{
+        transform: rotate(0deg);
+    }
+}
+@keyframes appear{
+    from{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes disappear{
+    from{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@keyframes fromRight {
+	0% {
+		opacity: 0;
+		transform: translateX(100px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes fromLeft {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+}
+.disapearByOpacity{
+    animation: disappear 1s ease 0s 1 normal forwards;
+    pointer-events: none;
+    cursor: default;
+}
+.appearByOpacity{
+    animation: appear 1.5s ease 0s 1 normal forwards;
+}
+
+.rookyContent{
+    display: none;
+    top: 0;
+}
+.mediumContent{
+    display: none;
+    top: 0;
+}
+.confirmContent{
+    display: none;
+    top: 0;
+}
+.proContent{
+    display: none;
+    top: 0;
+}
+
+.menuBtn{
+    width: 80px;
+}
+
+.cancelBox{
+    display: flex;
+    justify-content: end;
+}
+
+.cancel{
+    background-color: black;
+    width:10px;
+    height:10px;
+    border-radius: 50%;
+}
+
+.appearByDisplay{
+    display: block;
+    width: 90%;
+    position: absolute;
+    left: 160px;
+    top: -50px;
+    animation: fromRight 1s ease 0s 1 normal forwards;
+}
+
+.disappearByDisplay{
+    animation: fromLeft 1s ease 0s 1 normal forwards;
+    display: none;
+}

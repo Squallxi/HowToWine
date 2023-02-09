@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require "includes/partials/page_head.phtml"; ?>
+    <link rel="stylesheet" href="public/styles/reset.css">
+    <link rel="stylesheet" href="public/styles/menu_element.css">
+    <link rel="stylesheet" href="public/styles/cardLeft_element.css">
+    <link rel="stylesheet" href="public/styles/cardRight_element.css">
+    <link rel="stylesheet" href="public/styles/footer_element.css">
+</head>
+<body>
+    <header id="main_header">
+        <div class="container">
+            <div id="main_headerTop">
+
+            </div>
+            <div id="main_headerBottom">
+                <nav>
+                    <?php require "includes/partials/nav_element.phtml"; ?> 
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="main_photo"></div>
+        <section id="main_siteInfo">
+            <div class="container">
+                <div>
+                    <?php require "includes/partials/menu_element.phtml"; ?>
+                </div>
+                <div>
+                    <?php require "includes/partials/cardLeft_element.phtml"; ?>
+                </div>
+                <div>
+                    <?php require "includes/partials/cardRight_element.phtml"; ?>
+                </div>
+                <div>
+                    <?php require "includes/partials/cardLeft_element.phtml"; ?>
+                </div>
+                <div>
+                    <?php require "includes/partials/cardRight_element.phtml"; ?>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <?php require "includes/partials/footer_element.phtml" ?>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript"src="public/scripts/script.js"></script>
+</html>
