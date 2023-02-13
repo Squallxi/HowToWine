@@ -2,25 +2,27 @@
 
     require_once "includes/core/models/bdd.php";
 	require_once "includes/core/class/Chapitre.php";
-
+	//Récupération des données de la table Chapitre dans la bdd
     function getAllChapitres(): array{
 		$conn = getConnexion();
 
-    $SQLQuery = "SELECT chapitre.id, chapitre.titre
+    $SQLQuery = "SELECT chapitre.id, chapitre.nom_chapitre, chapitre.contenu, chapitre.id_lecon, chapitre.id_niveau,
+	 chapitre.id_theme
 			FROM chapitre";
 
 		$SQLStmt = $conn->prepare($SQLQuery);
 		$SQLStmt->execute();
 
-		$listeChapitre = array();
+		$listeChapitres = array();
 		while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
-			$unChapitre = new Chapitre($SQLRow['id'], $SQLRow['nom_chapitre'], $SQLRow['contenu']);			
+			$unChapitre = new Chapitre($SQLRow['nom_chapitre'], $SQLRow['contenu'], $SQLRow['id_lecon'],
+			$SQLRow['id_niveau'], $SQLRow['id_theme']);			
 			$unChapitre->setId($SQLRow['id']);
-			$listeChapitre[] = $unChapitre;		
+			$listeChapitres[] = $unChapitre;		
 		}
 
 		$SQLStmt->closeCursor();
 
-		return $listeChapitre;
+		return $listeChapitres;
 	}
 

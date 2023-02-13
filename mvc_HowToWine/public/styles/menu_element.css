@@ -1,110 +1,104 @@
 @import url("reset.css");
 @import url("variable.css");
+@import url("keyframe.css");
+
+.resetMenu{
+    display: none;
+}
 #demiCercle{
     position: relative;
-    background-color: rgb(129, 40, 61);
+    background-color: var(--color-primary);
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 30rem;
+    height: 30rem;
+    left: -15rem;
+    margin-top: 3rem;
+}
+.animatedMenu{
     animation: rotateMenu 2s ease 0s 1 normal forwards;
-    left: -217PX;
 }
 #cercle1{
     position: absolute;
-    display: inline-block;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 5rem;
+    grid-row-gap: 0px;
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    left: 255px;
-    TOP: 45px;   
+    width: 3rem;
+    height: 3rem;
+    left: 24rem;
+    TOP: 45px;  
+    transition-duration: 0.3s;
+}
+#cercle1:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.3s;
 }
 #cercle2{
     position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 5rem;
+    grid-row-gap: 0px;
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    left: 290px;
-    TOP: 140px;
-    
-    
+    width: 3rem;
+    height: 3rem;
+    left: 28.5rem;
+    TOP: 13rem;
+    transition-duration: 0.3s;
+}
+#cercle2:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.3s;
 }
 #cercle3{
     position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 5rem;
+    grid-row-gap: 0px;
     background-color: rgb(0, 0, 0);
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    left: 260px;
-    TOP: 230px;
-    
-    
+    width: 3rem;
+    height: 3rem;
+    left: 25rem;
+    TOP: 23rem;
+    transition-duration: 0.3s; 
+}
+#cercle3:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.3s;
 }
 span{
     user-select: none;
     width: 240px;
     animation: appear 3s ease 0s 1 normal forwards;
 }
+
 .chooseMenu{
-    position: absolute;
-    left: 30px;
+    grid-area: 1 / 2 / 2 / 3;
+    /* position: absolute;
+    left: 5rem;
+    top: 0.5rem; */
+    font-size: var(--text-size);
+
 }
 p{
-    margin: 5px;
+    padding: 5px;
+    font-size: 1.25rem;
 }
-@keyframes rotateMenu{
-    from{
-        transform: rotate(-180deg);
-    }
-    to{
-        transform: rotate(0deg);
-    }
-}
-@keyframes appear{
-    from{
-        opacity: 0;
-    }
-    50%{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
-}
-@keyframes disappear{
-    from{
-        opacity: 1;
-    }
-    50%{
-        opacity: 1;
-    }
-    to{
-        opacity: 0;
-    }
-}
-@keyframes fromRight {
-	0% {
-		opacity: 0;
-		transform: translateX(100px);
-	}
 
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-@keyframes fromLeft {
-	0% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-
-	100% {
-		opacity: 0;
-		transform: translateX(50px);
-	}
-}
 .disapearByOpacity{
     animation: disappear 1s ease 0s 1 normal forwards;
     pointer-events: none;
@@ -114,21 +108,23 @@ p{
     animation: appear 1.5s ease 0s 1 normal forwards;
 }
 
-.rookyContent{
+.content1{
     display: none;
-    top: 0;
+    width: 32rem;
+    grid-area: 2 / 3 / 3 / 4;
 }
-.mediumContent{
+.content2{
     display: none;
-    top: 0;
+    width: 32rem;
+    grid-area: 1 / 2 / 2 / 3;
+    left: 15rem;
 }
-.confirmContent{
+.content3{
     display: none;
-    top: 0;
-}
-.proContent{
-    display: none;
-    top: 0;
+    width: 32rem;
+    grid-area: 1 / 2 / 2 / 3;
+    top: -10rem;
+    left: 23rem;
 }
 
 .menuBtn{
@@ -149,10 +145,7 @@ p{
 
 .appearByDisplay{
     display: block;
-    width: 90%;
     position: absolute;
-    left: 160px;
-    top: -50px;
     animation: fromRight 1s ease 0s 1 normal forwards;
 }
 

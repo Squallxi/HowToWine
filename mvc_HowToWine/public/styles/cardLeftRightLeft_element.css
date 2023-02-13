@@ -1,0 +1,72 @@
+@import url("reset.css");
+@import url("variable.css");
+@import url("keyframe.css");
+
+
+.gridLeftRightLeft{
+    width: 98vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    align-items: center;
+         
+}
+
+.gridLeftRightLeft :nth-child(1){
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center;    
+}
+.gridLeftRightLeft :nth-child(2){
+    grid-area: 2 / 2 / 3 / 3; 
+    justify-self: center;  
+}
+.gridLeftRightLeft :nth-child(3){
+    grid-area: 3 / 1 / 4 / 2;  
+    justify-self: center;  
+}
+
+.main_cardLeft{
+    padding: 30px;
+    border: solid 1px transparent;
+    border-radius: 10px;
+    width: 40vw;
+    background-color:transparent;
+    margin: 20px;
+    color: transparent;
+}
+
+.logoTheme{
+    width: 6rem;
+    opacity: 0;
+}
+.logoThemeAppear{
+    width: 6rem;
+    opacity: 1;
+}
+.main_cards{
+    padding: 30px;
+    border: solid 1px transparent;
+    border-radius: 10px;
+    width: 40vw;
+    background-color:transparent;
+    margin: 20px;
+    color: transparent;
+}
+
+.appearFromRight{
+    animation: appearFromRight 1s ease 0s 1 normal forwards;
+    color: white;
+    border: solid 1px var(--color-secondary);
+    background-color:var(--color-primary);
+    opacity: 1;
+}
+.appearFromLeft{
+    animation: appearFromLeft 1s ease 0s 1 normal forwards;
+    color: white;
+    border: solid 1px var(--color-secondary);
+    background-color:var(--color-primary);
+    opacity: 1;
+}
+      

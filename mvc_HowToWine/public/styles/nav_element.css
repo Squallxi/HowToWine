@@ -1,0 +1,69 @@
+@import url("variable.css");
+a{
+    font-size: var(--subTitle-size);
+    text-decoration: none;
+    color: var(--color-white);
+}
+#main_headerBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#main_headerLogoBox{
+    position: relative;
+}
+#mainLogo{
+    border-radius: 50%;
+    transform-origin: center;
+    width: 10rem;
+    position: absolute;
+    top: -72px;
+    left: 0;
+    transition-duration: 0.3s;   
+}
+#main_headerLogoBox:hover > #mainLogo{
+    animation: spin 1s linear forwards, moveLeftToRight 1s linear forwards;
+    transition: all 0.5s ease;    
+}
+#homeLink{
+    width: 2rem;
+    color: var(--color-black);
+    font-size: 1.5rem;
+    margin: 0.5rem;         
+}
+#homeText{
+    width: 2rem;
+    color: var(--color-black);
+    font-size: 1.5rem;
+    margin: 0.5rem;  
+}
+nav{
+    margin: 2.5rem;
+}
+ul{
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+}
+li{
+   list-style-type: none;
+   padding: 10px;
+   background-color: var(--color-primary);
+   border-radius: 10px;
+   transition-duration: 0.3s;
+}
+li:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes moveLeftToRight {
+    0%   { left: 0px; }
+    100% { left: 100%; }
+}

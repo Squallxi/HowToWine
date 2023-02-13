@@ -1,10 +1,42 @@
 @import url("reset.css");
 @import url("variable.css");
+.footer{
+    background-color: blanchedalmond;
+}
 .footer_listLogo{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
 }
 .footer_listAbout{
     display: flex;
     justify-content: space-around;
-    width: 100vw;
+    width: 98vw;
+    padding: 2rem;
+}
+.footer_inlineLogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.footer_logoBox{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.allRights{
+    background-color: blanchedalmond;
+}
+
+.footer_subtitle{
+    font-size: var(--subTitle-size);
+}
+.footer_newsLetter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    background-color: burlywood;
+    padding: 1rem;
 }

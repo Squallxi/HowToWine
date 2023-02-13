@@ -1,0 +1,10 @@
+#main_photo{
+    box-shadow: 0px 10px 5px #888;
+    background-image: url("../img/alex-gorbi.jpg");
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    filter: grayscale(40%);
+    width: 98.9vw;
+    height: 81vh;
+}
