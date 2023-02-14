@@ -8,6 +8,10 @@
             require_once "includes/core/controllers/controller.php";
             break;
         }
+        case 'oenologie':{
+            require_once "includes/core/controllers/controller_oenologie.php";
+            break;
+        }
         default:{
             require_once "includes/core:controller_error.php";
         }

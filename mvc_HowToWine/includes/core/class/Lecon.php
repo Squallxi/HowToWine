@@ -2,10 +2,9 @@
 
 	class Lecon{
 		private int $id;
-        private int $titre;
+        private string $titre;
 
-		public function __construct(int $id = '', int $titre = ''){
-				$this->id = $id;
+		public function __construct(string $titre = ''){
 				$this->titre = $titre;
 		}
 
@@ -17,11 +16,11 @@
 			$this->id = $id;
 		}
 
-		public function getTitre(): int{
+		public function getTitre(): string{
 			return $this->titre;
 		}
 
-		public function setTitre(int $titre): void{
+		public function setTitre(string $titre): void{
 			$this->titre = $titre;
 		}
 	}

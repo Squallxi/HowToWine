@@ -47,6 +47,17 @@ A faire plus tard :
 -intégrer un icone/logo pour chaque thème sur la page index
 
 
+14/02/2023 : Page index partiellement terminé
+
+
+Continuer sur la mise en forme des leçons.
+
+
+A faire plus tard : 
+
+
+-intégrer les remarques à la fin de chaque chapitre pour guider l'utilisateur vers un autre niveau s'il veux en apprendre plus sur un étape d'élaboration.
+
 
 
 

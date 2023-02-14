@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="public/styles/reset.css">
     <link rel="stylesheet" href="public/styles/btn_submit.css">
     <link rel="stylesheet" href="public/styles/mainPhoto.css">
+    <link rel="stylesheet" href="public/styles/containerText.css">
     <link rel="stylesheet" href="public/styles/nav_element.css">
-    <link rel="stylesheet" href="public/styles/menu_element.css">
-    <link rel="stylesheet" href="public/styles/cardLeftRightLeft_element.css">
     <link rel="stylesheet" href="public/styles/footer_element.css">
-    <link rel="stylesheet" href="public/styles/btn_submit.css">
 </head>
 <body>
     <header id="main_header">
@@ -22,14 +20,15 @@
     </header>
     <main>
         <div id="main_photo"></div>
-        <section id="main_siteInfo">
-            <div class="container">
-                <div>
-                    <?php require "includes/partials/menu_element.phtml"; ?>
-                </div>
-                <div class="gridLeftRightLeft">
-                    <?php require "includes/partials/cardLeftRightLeft_element.phtml"; ?>
-                </div>
+        <section id="Lecon">
+            <div class="container_text">
+                <?php
+                foreach($lesChapitres as $unChapitre){
+                    print($unChapitre->getChapitre());
+                    print($unChapitre->getContenu());
+                }
+                
+                ?>
             </div>
         </section>
     </main>
@@ -40,8 +39,6 @@
     </footer>
 </body>
 <script type="text/javascript"src="public/scripts/nav_element.js"></script>
-<script type="text/javascript"src="public/scripts/index_menu.js"></script>
-<script type="text/javascript"src="public/scripts/card_element.js"></script>
 <script type="text/javascript"src="public/scripts/btn_submit.js"></script>
 
 </html>

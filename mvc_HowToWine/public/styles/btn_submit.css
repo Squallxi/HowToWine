@@ -1,21 +1,21 @@
 @import url(variable.css);
 
 .btn_submitBox{
-    width: 100%;
-    height: 100vh;
-    background: #e3ebfe;
+    width: 70%;
+    height: 6rem;
+    background-color: burlywood;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 button{
-    width: 270px;
-    height: 80px;
+    width: 10rem;
+    height: 3rem;
     border: none;
     outline: none;
-    background: #2f2f2f;
-    color: #fff;
+    background-color: var(--color-gray);
+    color: var(--color-black);
     font-size: 22px;
     border-radius: 40px;
     text-align: center;
@@ -23,6 +23,13 @@ button{
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    transition-duration: 0.3s;
+}
+button:hover{
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05);
+    transition-duration: 0.3s;
 }
 
 .check-box{
@@ -52,6 +59,7 @@ svg path{
 .active{
     background: var(--color-primary);
     transition: 1s;
+    color: var(--color-white);
 }
 
 .active .check-box{

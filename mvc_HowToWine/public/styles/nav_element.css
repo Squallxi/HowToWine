@@ -5,6 +5,7 @@ a{
     color: var(--color-white);
 }
 #main_headerBottom{
+    height: 10rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,27 +39,113 @@ a{
     margin: 0.5rem;  
 }
 nav{
-    margin: 2.5rem;
-}
-ul{
     display: flex;
-    justify-content: flex-end;
-    gap: 50px;
+    height: 100%;
+    align-items: flex-end;
 }
-li{
-   list-style-type: none;
-   padding: 10px;
-   background-color: var(--color-primary);
-   border-radius: 10px;
-   transition-duration: 0.3s;
-}
-li:hover{
-    -ms-transform: scale(1.05); /* IE 9 */
-    -webkit-transform: scale(1.05); /* Safari 3-8 */
-    transform: scale(1.05);
-    transition-duration: 0.3s;
-}
-
+#main_nav, #main_nav ul{
+    padding:0;
+    margin:0;
+    list-style:none;
+    text-align:center;
+    }
+    #main_nav li{
+    width: 20rem;
+    display:inline-block;
+    position:relative;
+    border-radius:8px 8px 0 0;
+    margin: 5px;
+    border-radius: 4px;
+    }
+    #main_nav ul li{
+    display:inherit;
+    border-radius:0;
+    }
+    #main_nav ul li:hover{
+    border-radius:0;
+    }
+    #main_nav ul li:last-child{
+    border-radius:0 0 8px 8px;
+    }
+    #main_nav ul{
+    position:absolute;
+    z-index: 1000;
+    max-height:0;
+    left: 0;
+    right: 0;
+    overflow:hidden;
+    -moz-transition: .8s all .3s;
+    -webkit-transition: .8s all .3s;
+    transition: .8s all .3s;
+    }
+    #main_nav li:hover ul{
+    max-height:15em;
+    }
+    /* background des liens menus */
+    #main_nav li:first-child{
+    background-color: var(--color-primary);
+    background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
+    background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
+    }
+    #main_nav li:nth-child(2){
+        background-color: var(--color-primary);
+        background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
+        background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
+    }
+    #main_nav li:nth-child(3){
+        background-color: var(--color-primary);
+        background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
+        background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
+    }
+    #main_nav li:last-child{
+        background-color: var(--color-primary);
+        background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
+        background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
+    }
+    /* background des liens sous menus */
+    #main_nav li:first-child li{
+    background:var(--color-primary);
+    }
+    #main_nav li:nth-child(2) li{
+    background:var(--color-primary);
+    }
+    #main_nav li:nth-child(3) li{
+    background:var(--color-primary);
+    }
+    #main_nav li:last-child li{
+    background:var(--color-primary);
+    }
+    /* background des liens menus et sous menus au survol */
+    #main_nav li:first-child:hover, #main_nav li:first-child li:hover{
+    background:#dc2727;
+    }
+    #main_nav li:nth-child(2):hover, #main_nav li:nth-child(2) li:hover{
+    background:#dc2727;
+    }
+    #main_nav li:nth-child(3):hover, #main_nav li:nth-child(3) li:hover{
+    background:#dc2727;
+    }
+    #main_nav li:last-child:hover, #main_nav li:last-child li:hover{
+    background:#dc2727;
+    }
+    /* les a href */
+    #main_nav a{
+    text-decoration:none;
+    display:block;
+    padding:8px 70px;
+    color:var(--color-white);
+    font-family:arial;
+    }
+    #main_nav ul a{
+    padding:8px 0;
+    }
+    #main_nav li:hover li a{
+    color:var(--color-white);
+    text-transform:inherit;
+    }
+    #main_nav li:hover a, #main_nav li li:hover a{
+    color:var(--color-white);
+    }
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
