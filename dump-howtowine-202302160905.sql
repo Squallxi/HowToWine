@@ -150,7 +150,7 @@ CREATE TABLE `chapitre` (
   CONSTRAINT `chapitre_FK` FOREIGN KEY (`id_lecon`) REFERENCES `lecon` (`id`),
   CONSTRAINT `chapitre_FK_1` FOREIGN KEY (`id_theme`) REFERENCES `themes` (`id`),
   CONSTRAINT `chapitre_FK_2` FOREIGN KEY (`id_niveau`) REFERENCES `niveau` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -880,4 +880,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-14 16:53:04
+-- Dump completed on 2023-02-16  9:05:07
