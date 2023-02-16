@@ -1,6 +1,36 @@
-#main_photo{
+#main_photoOeno{
+    box-shadow: 0px 10px 5px #888;
+    background-image: url("../img/mario-la-pergola.jpg");
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    filter: grayscale(40%);
+    width: 98.9vw;
+    height: 81vh;
+}
+#main_photoViti{
+    box-shadow: 0px 10px 5px #888;
+    background-image: url("../img/mario-la-pergola.jpg");
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    filter: grayscale(40%);
+    width: 98.9vw;
+    height: 81vh;
+}
+#main_photoHome{
     box-shadow: 0px 10px 5px #888;
     background-image: url("../img/alex-gorbi.jpg");
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    filter: grayscale(40%);
+    width: 98.9vw;
+    height: 81vh;
+}
+#main_photoExo{
+    box-shadow: 0px 10px 5px #888;
+    background-image: url("../img/aaron-burden.jpg");
     background-size: cover;
     background-position-y: center;
     background-position-x: center;

@@ -1,0 +1,17 @@
+<?php
+
+foreach ($lesQuestionnaires as $unQuestionnaire){
+    if($unQuestionnaire->getIdTheme()== 1){
+        print('<div class="card_questionnaire">');
+            print('<div class="card_imgBox">');
+                print('<img class="card_img" src="' . $unQuestionnaire->getImgQuestionnaire() . '">');
+            print('</div>');
+            print('<div class="card_intitule">');
+                print('<span>'.$unQuestionnaire->getIntituleQuestionnaire().'</span>');
+            print('</div>');
+            print('<div class="card_button">');
+                print('<button>'.'Commencer ->'.'</button>');
+            print('</div>');
+        print('</div>'); 
+    }
+}

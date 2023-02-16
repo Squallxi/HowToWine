@@ -6,11 +6,11 @@
 <head>
     <?php require "includes/partials/page_head.phtml"; ?>
     <link rel="stylesheet" href="public/styles/reset.css">
-    <link rel="stylesheet" href="public/styles/btn_submit.css">
     <link rel="stylesheet" href="public/styles/mainPhoto.css">
-    <link rel="stylesheet" href="public/styles/containerText.css">
     <link rel="stylesheet" href="public/styles/nav_element.css">
+    <link rel="stylesheet" href="public/styles/cardExo.css">
     <link rel="stylesheet" href="public/styles/footer_element.css">
+    <link rel="stylesheet" href="public/styles/btn_submit.css">
 </head>
 <body>
     <header id="main_header">
@@ -20,17 +20,12 @@
     </header>
     <main>
         <div id="<?= setIdByPage($page)?>"></div>
-        <section id="Lecon">
-            <div class="container_text">
-                <?php
-                foreach($lesChapitres as $unChapitre){
-                    print($unChapitre->getChapitre());
-                    print($unChapitre->getContenu());
-                }
-                
-                ?>
-            </div>
-        </section>
+        <div class="container">
+            <h1>Sélectionnez un thème sur lequel vous souhaitez vous exercer.</h1>
+            <section id="ExercicesList">
+                <?php require_once "includes/partials/cardExo.phtml" ?>
+            </section>
+        </div>
     </main>
     <footer>
         <div class="container">

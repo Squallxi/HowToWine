@@ -207,7 +207,7 @@ CREATE TABLE `composer` (
   `id_question` int(11) NOT NULL,
   KEY `composer_FK` (`id_questionnaire`),
   KEY `composer_FK_1` (`id_question`),
-  CONSTRAINT `composer_FK` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaire` (`id`),
+  CONSTRAINT `composer_FK` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaires` (`id`),
   CONSTRAINT `composer_FK_1` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -613,8 +613,9 @@ DROP TABLE IF EXISTS `question`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `intitulé` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -623,29 +624,36 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
+INSERT INTO `question` VALUES (1,'<span>Comment apelle-t-on la transformation des sucres en alcool ?</span>'),(2,'<span>Quels sont les organismes responsables de cette transformation ?</span>'),(3,'<span>Quels sont les facteurs importants de décision de récolte ?</span>'),(4,'<span>Remettre en ordre les différentes étapes pré-encuvage ?</span>'),(5,'<span>Pour quel raison foule-t-on le raisin ?</span>'),(6,'<span>Quels sont les principales méthodes mises en place pour démarrer la fermentation alcoolique ?</span>'),(7,'<span>Comment apelle-t-on la deuxième fermentation généralement effectué en rouge ?</span>'),(8,'<span>En quoi consiste les écoulages ?</span>'),(9,'<span>En quoi consiste le soutirage ?</span>'),(10,'<span>Quelle pratique permet en partie d\'éviter les dépots dans la bouteille ?</span>');
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `questionnaire`
+-- Table structure for table `questionnaires`
 --
 
-DROP TABLE IF EXISTS `questionnaire`;
+DROP TABLE IF EXISTS `questionnaires`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `questionnaire` (
+CREATE TABLE `questionnaires` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `intitule` text NOT NULL,
+  `id_theme` int(11) DEFAULT NULL,
+  `img_Questionnaires` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `questionnaires_FK` (`id_theme`),
+  CONSTRAINT `questionnaires_FK` FOREIGN KEY (`id_theme`) REFERENCES `themes` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `questionnaire`
+-- Dumping data for table `questionnaires`
 --
 
-LOCK TABLES `questionnaire` WRITE;
-/*!40000 ALTER TABLE `questionnaire` DISABLE KEYS */;
-/*!40000 ALTER TABLE `questionnaire` ENABLE KEYS */;
+LOCK TABLES `questionnaires` WRITE;
+/*!40000 ALTER TABLE `questionnaires` DISABLE KEYS */;
+INSERT INTO `questionnaires` VALUES (1,'Questionnaires sur la production de vin rouge',1,'./public/img/kym-ellis.jpg'),(2,'Questionnaires sur la production de vin blanc',1,'./public/img/celina-albertz.jpg'),(3,'Questionnaires sur la production de vin rosé',1,'./public/img/corina-rainer.jpg'),(4,'Questionnaires sur la viticulture',2,'./public/img/maja-petric.jpg'),(5,'Compléter les schémas',NULL,'./public/img/geojango-maps.jpg');
+/*!40000 ALTER TABLE `questionnaires` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -880,4 +888,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-16  9:05:07
+-- Dump completed on 2023-02-16 17:12:46

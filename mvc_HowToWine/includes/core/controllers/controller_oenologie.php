@@ -4,6 +4,7 @@
         case 'amateur':{
             require_once "includes/core/dao/daoChapitre.php";
             require_once "includes/core/dao/daoLecon.php";
+            require_once "includes/core/function/main_photoToPage.php";
 
             $lesChapitres = getOenoChapters_LvlOne();
             $lesLecons = getAllLecons();
@@ -13,6 +14,7 @@
         }
         case 'etudiant':{
             require_once "includes/core/dao/daoChapitre.php";
+            require_once "includes/core/function/main_photoToPage.php";
 
             $lesChapitres = getOenoChapters_LvlTwo();
 
@@ -21,6 +23,7 @@
         }
         case 'professionnel':{
             require_once "includes/core/dao/daoChapitre.php";
+            require_once "includes/core/function/main_photoToPage.php";
 
             $lesChapitres = getOenoChapters_LvlThree();
 
@@ -28,9 +31,12 @@
             break;
         }
         case 'exercice':{
-            require_once "includes/core/dao/daoExercices.php";
+            // require_once "includes/core/dao/daoExercices.php";
+            require_once "includes/core/function/main_photoToPage.php";
+            require_once "includes/core/dao/daoLecon.php";
 
-            $lesChapitres = getOenoExercices();
+            // $lesExercices = getOenoExercices();
+            $lesLecons = getAllLecons();
 
             require_once "includes/core/views/exercices.phtml";
             break;

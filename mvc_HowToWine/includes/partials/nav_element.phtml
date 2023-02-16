@@ -16,21 +16,20 @@
                             print('<li><a href="index.php?page=oenologie&action=amateur">niveau Amateur</a></li>');
                             print('<li><a href="index.php?page=oenologie&action=etudiant">niveau Étudiant</a></li>');
                             print('<li><a href="index.php?page=oenologie&action=professionnel">niveau Professionnel</a></li>');
-                            print('<li><a href="index.php?page=oenologie&action=exercice">Exercices</a></li>');
                         }else if($uneLecon->getTitre() == 'Viticulture'){
                             print('<li><a href="index.php?page=viticulture&action=amateur">niveau Amateur</a></li>');
                             print('<li><a href="index.php?page=viticulture&action=etudiant">niveau Étudiant</a></li>');
-                            print('<li><a href="index.php?page=viticulture&action=professionnel">niveau Professionnel</a></li>');
-                            print('<li><a href="index.php?page=viticulture&action=exercice">Exercices</a></li>');  
+                            print('<li><a href="index.php?page=viticulture&action=professionnel">niveau Professionnel</a></li>'); 
                         }else{
                             print('<li><a href="index.php?page=degustation&action=amateur">niveau Amateur</a></li>');
                             print('<li><a href="index.php?page=degustation&action=etudiant">niveau Étudiant</a></li>');
                             print('<li><a href="index.php?page=degustation&action=professionnel">niveau Professionnel</a></li>');
-                            print('<li><a href="index.php?page=degustation&action=exercice">Exercices</a></li>');
                         }
+
                         print('</ul>');
                     print('</li>');    
                 }
+                print('<li><a href="index.php?page=listExo">Exercices</a></li>');
             ?>
         </ul>
     </nav>
