@@ -5,7 +5,7 @@
 }
 .footer_listLogo{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     padding-top: 2rem;
 }
@@ -39,4 +39,7 @@
     align-items: baseline;
     background-color: burlywood;
     padding: 1rem;
+}
+i{
+    color: black;
 }

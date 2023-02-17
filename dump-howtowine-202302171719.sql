@@ -164,6 +164,33 @@ INSERT INTO `chapitre` VALUES (1,'<h1>Qu\'est-ce que le vin ?</h1>','<p>Le vin e
 UNLOCK TABLES;
 
 --
+-- Table structure for table `classer`
+--
+
+DROP TABLE IF EXISTS `classer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `classer` (
+  `id_questionnaire` int(11) NOT NULL,
+  `id_sous_theme` int(11) NOT NULL,
+  KEY `classer_FK` (`id_questionnaire`),
+  KEY `classer_FK_1` (`id_sous_theme`),
+  CONSTRAINT `classer_FK` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaires` (`id`),
+  CONSTRAINT `classer_FK_1` FOREIGN KEY (`id_sous_theme`) REFERENCES `sous_theme` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `classer`
+--
+
+LOCK TABLES `classer` WRITE;
+/*!40000 ALTER TABLE `classer` DISABLE KEYS */;
+INSERT INTO `classer` VALUES (1,1),(2,1),(3,1),(1,2),(2,2),(3,2),(1,3),(2,3),(3,3),(1,4),(2,4),(3,4),(1,5),(2,5),(3,5),(1,6),(2,6),(3,6),(1,7),(2,7),(3,7),(1,8),(2,8),(3,8);
+/*!40000 ALTER TABLE `classer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `clones`
 --
 
@@ -705,6 +732,33 @@ LOCK TABLES `reponses` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `sous_theme`
+--
+
+DROP TABLE IF EXISTS `sous_theme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sous_theme` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(250) NOT NULL,
+  `id_theme` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sous_theme_FK` (`id_theme`),
+  CONSTRAINT `sous_theme_FK` FOREIGN KEY (`id_theme`) REFERENCES `themes` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sous_theme`
+--
+
+LOCK TABLES `sous_theme` WRITE;
+/*!40000 ALTER TABLE `sous_theme` DISABLE KEYS */;
+INSERT INTO `sous_theme` VALUES (1,'La récolte',1),(2,'La maturité de la récolte',1),(3,'La macération pré-fermentaire',1),(4,'L\'encuvage',1),(5,'Les vinifications',1),(6,'Les écoulages',1),(7,'L\'élevage',1),(8,'La mise en bouteille',1);
+/*!40000 ALTER TABLE `sous_theme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `taille`
 --
 
@@ -888,4 +942,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-16 17:12:46
+-- Dump completed on 2023-02-17 17:19:06

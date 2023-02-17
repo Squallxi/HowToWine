@@ -4,11 +4,13 @@
 		private int $id;
 		private ?int $id_theme;
 		private string $intitule, $img_questionnaire;
+		private $sous_theme = array();
 
-		public function __construct(string $intitule = '', ?int $id_theme = null, string $img_questionnaire =''){
+		public function __construct(string $intitule = '', ?int $id_theme = null, string $img_questionnaire ='', $sous_theme = array()){
 				$this->intitule = $intitule;
 				$this->id_theme = $id_theme;
 				$this->img_questionnaire = $img_questionnaire;
+				$this->setSousThemes($sous_theme);
 		}
 
 		public function getId(): int{
@@ -38,5 +40,12 @@
 
 		public function setImgQuestionnaire(string $img_questionnaire): void{
 			$this->img_questionnaire = $img_questionnaire;
+		}
+		public function getSousThemes(): array{
+			return $this->sous_theme;
+		}
+	
+		public function setSousThemes($sous_theme = array()): void{
+			$this->sous_theme = $sous_theme;
 		}	
 	}

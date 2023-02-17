@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="public/styles/reset.css">
     <link rel="stylesheet" href="public/styles/mainPhoto.css">
     <link rel="stylesheet" href="public/styles/nav_element.css">
+    <link rel="stylesheet" href="public/styles/containerText.css">
     <link rel="stylesheet" href="public/styles/cardExo.css">
     <link rel="stylesheet" href="public/styles/footer_element.css">
-    <link rel="stylesheet" href="public/styles/btn_submit.css">
 </head>
 <body>
     <header id="main_header">
@@ -20,9 +20,9 @@
     </header>
     <main>
         <div id="<?= setIdByPage($page)?>"></div>
-        <div class="container">
+        <div class="container_grid">
             <h1>Sélectionnez un thème sur lequel vous souhaitez vous exercer.</h1>
-            <section id="ExercicesList">
+            <section id="exercicesList">
                 <?php require_once "includes/partials/cardExo.phtml" ?>
             </section>
         </div>
@@ -34,6 +34,6 @@
     </footer>
 </body>
 <script type="text/javascript"src="public/scripts/nav_element.js"></script>
-<script type="text/javascript"src="public/scripts/btn_submit.js"></script>
+<script type="text/javascript"src="public/scripts/card_questionnaire.js"></script>
 
 </html>

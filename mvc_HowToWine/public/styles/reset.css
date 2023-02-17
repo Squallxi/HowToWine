@@ -12,3 +12,9 @@
     padding: 0;
     /* border: solid 1px black; */
   }
+li{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}

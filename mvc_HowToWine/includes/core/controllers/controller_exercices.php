@@ -6,5 +6,7 @@ ini_set('display_errors', 'on');
 
     $lesLecons = getAllLecons();
     $lesQuestionnaires = getAllQuestionnaire();
+    $listeSousTheme = getAllSubTheme();
+    // $questionnairesWithSubTheme = getSubTheme();
 
     require_once "includes/core/views/listExercices.phtml";

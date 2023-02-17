@@ -3,14 +3,42 @@
 foreach ($lesQuestionnaires as $unQuestionnaire){
     if($unQuestionnaire->getIdTheme()== 1){
         print('<div class="card_questionnaire">');
+            print('<div class="card_content">');
+                print('<div class="card_imgBox">');
+                    print('<img class="card_img" src="' . $unQuestionnaire->getImgQuestionnaire() . '">');
+                print('</div>');
+                print('<div class="card_intitule">');
+                    print('<span>'.$unQuestionnaire->getIntituleQuestionnaire().'</span>');
+                print('</div>');
+                print('<div class="card_buttonBox">');
+                    print('<button class="card_button">Commencer -></button>');
+                print('</div>');
+            print('</div>');    
+            print('<table class="consulter_subTheme">');
+                print('<thead>');
+                    print('<th>Sous-thème</th>');
+                    print('<th>Commencer</th>');
+                print('</thead>');
+                print('<tbody>');
+            foreach($listeSousTheme as $unSousTheme){
+                    print('<tr>');
+                        print('<td>'.$unSousTheme->getName().'</td>');
+                        print('<td><a href="index.php?page=listExo&action=consulter&id='.$unQuestionnaire->getId().'">-></a></td>');
+                    print('</tr>');
+                    }
+                print('</tbody>');
+            print('</table>');
+        print('</div>');
+    }else if($unQuestionnaire->getIdTheme()== 2){
+        print('<div class="card_questionnaire">');
             print('<div class="card_imgBox">');
                 print('<img class="card_img" src="' . $unQuestionnaire->getImgQuestionnaire() . '">');
             print('</div>');
             print('<div class="card_intitule">');
                 print('<span>'.$unQuestionnaire->getIntituleQuestionnaire().'</span>');
             print('</div>');
-            print('<div class="card_button">');
-                print('<button>'.'Commencer ->'.'</button>');
+            print('<div class="card_buttonBox">');
+                print('<button class="card_button">Commencer -></button>');
             print('</div>');
         print('</div>'); 
     }
