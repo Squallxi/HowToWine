@@ -2,6 +2,10 @@ h1{
     text-align: center;
     margin: 3rem;
 }
+.ExoTheme{
+    text-align: center;
+    border-bottom: solid 1px black;
+}
 #exercicesList{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -46,7 +50,7 @@ h1{
 }
 .card_intitule span{
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 1.25rem;
     padding: 5px;
 }
@@ -107,7 +111,16 @@ tr{
     justify-content: space-between;
     background-color: rgba(255,238,212,1);
     transition: background-color 0.5s ease 0s;
+    border-radius: 5px;
+}
+table tbody tr td a{
+    color: #000000;
+    font-size: 1.75rem;
+}
+td{
+    align-items: center;
+    display: flex;
 }
 tr:hover{
-    background-color: #E0E0E0;
+    border: solid 1px black;
 }

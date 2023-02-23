@@ -22,9 +22,15 @@
         <div id="<?= setIdByPage($page)?>"></div>
         <div class="container_grid">
             <h1>Sélectionnez un thème sur lequel vous souhaitez vous exercer.</h1>
-            <section id="exercicesList">
-                <?php require_once "includes/partials/cardExo.phtml" ?>
-            </section>
+            <div>
+                <?php require_once "includes/partials/cardExoOeno.phtml" ?>
+            </div>
+            <div>
+                <?php require_once "includes/partials/cardExoViti.phtml" ?>
+            </div>
+            <div>
+                <?php require_once "includes/partials/cardExoSchema.phtml" ?>
+            </div>
         </div>
     </main>
     <footer>

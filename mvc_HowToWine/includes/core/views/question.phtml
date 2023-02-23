@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="public/styles/reset.css">
     <link rel="stylesheet" href="public/styles/mainPhoto.css">
     <link rel="stylesheet" href="public/styles/nav_element.css">
-    <link rel="stylesheet" href="public/styles/menu_element.css">
-    <link rel="stylesheet" href="public/styles/cardLeftRightLeft_element.css">
+    <link rel="stylesheet" href="public/styles/containerText.css">
+    <link rel="stylesheet" href="public/styles/frm_question.css">
     <link rel="stylesheet" href="public/styles/footer_element.css">
 </head>
 <body>
@@ -20,16 +20,11 @@
     </header>
     <main>
         <div id="<?= setIdByPage($page)?>"></div>
-        <section id="main_siteInfo">
-            <div class="container">
-                <div>
-                    <?php require "includes/partials/menu_element.phtml"; ?>
-                </div>
-                <div class="gridLeftRightLeft">
-                    <?php require "includes/partials/cardLeftRightLeft_element.phtml"; ?>
-                </div>
-            </div>
-        </section>
+        <div class="container_question">
+            <form action="">
+                <?php require "includes/partials/frm_question.phtml"; ?>
+            </form>
+        </div>
     </main>
     <footer>
         <div class="container">
@@ -38,6 +33,5 @@
     </footer>
 </body>
 <script type="text/javascript"src="public/scripts/nav_element.js"></script>
-<script type="text/javascript"src="public/scripts/index_menu.js"></script>
-<script type="text/javascript"src="public/scripts/card_element.js"></script>
+<script type="text/javascript"src="public/scripts/frm_question.js"></script>
 </html>

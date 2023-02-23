@@ -16,6 +16,10 @@
             require_once "includes/core/controllers/controller_exercices.php";
             break;
         }
+        case 'question':{
+            require_once "includes/core/controllers/controller_question.php";
+            break;
+        }
         default:{
             require_once "includes/core:controller_error.php";
         }

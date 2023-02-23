@@ -1,0 +1,74 @@
+label{
+    text-align: center;
+}
+.checkLabel{
+    box-shadow: black 2px 2px 3px;
+}
+h3{
+    margin: 2rem;
+    user-select: none;
+}
+h4{
+    margin: 2rem;
+    text-align: center;
+    user-select: none;
+}
+#answerBox{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+}
+.reponseBoite{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    margin: 2px;
+    justify-self: center;
+    width: 20rem;
+}
+#submitBox{
+    display: flex;
+    justify-content: center;
+}
+.chooseBox{
+    justify-content: center;
+    display: flex;
+}
+.numberQuestion{
+    margin: 5px;
+    text-align: center;
+}
+
+.hide-checkbox + label {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 2px 0;
+    text-align: center;
+    background-color: #e74c3c;
+    border-radius: 15px;
+    font-family: 'Oswald', sans-serif;
+    color: #fff;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -o-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+    user-select: none;
+    }
+     
+    .hide-checkbox:checked + label {
+        display: inline-block;
+        background-color: #2ecc71;
+        }
+
+#submitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}

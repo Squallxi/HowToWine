@@ -1,10 +1,14 @@
 <?php
 
-	class Reponses{
+	class Question{
 		private int $id;
+		private string $intitule;
+		private $reponses = array();
 
-		public function __construct(){
-				
+		public function __construct(string $intitule = ""){
+			$this->id = 0;
+			$this->intitule = $intitule;
+			$this->reponses = array();
 		}
 
 		public function getIdQuestion(): int{
@@ -13,5 +17,20 @@
 
 		public function setIdQuestion(int $id): void{
 			$this->id = $id;
-		}	
+		}
+		public function getIntitule(): string{
+			return $this->intitule;
+		}
+
+		public function setIntitule(string $intitule): void{
+			$this->intitule = $intitule;
+		}
+			
+		public function getReponses(): array{
+			return $this->reponses;
+		}
+	
+		public function setReponse($reponses = array()): void{
+			$this->reponses = $reponses;
+		}			
 	}

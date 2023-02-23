@@ -65,7 +65,7 @@ nav{
     border-radius:0;
     }
     #main_nav ul li:last-child{
-    border-radius:0 0 15px 8px;
+    border-radius:0 0 8px 8px;
     }
     #main_nav ul{
     position:absolute;
@@ -83,21 +83,25 @@ nav{
     }
     /* background des liens menus */
     #main_nav li:first-child{
+        left: -6px;
     background-color: var(--color-primary);
     background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
     background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
     }
     #main_nav li:nth-child(2){
+        left: -6px;
         background-color: var(--color-primary);
         background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
         background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
     }
     #main_nav li:nth-child(3){
+        left: -6px;
         background-color: var(--color-primary);
         background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
         background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);
     }
     #main_nav li:last-child{
+        left: -6px;
         background-color: var(--color-primary);
         background-image:-webkit-linear-gradient(top, var(--color-menu) 0%, var(--color-primary) 100%);
         background-image:linear-gradient(to bottom, var(--color-menu) 0%, var(--color-primary) 100%);

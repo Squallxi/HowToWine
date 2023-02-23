@@ -58,8 +58,7 @@
 
 		$questionnairesWithSubTheme = array();
 		while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
-			$QuestionNsub = new Questionnaire($SQLRow['intitule'], $SQLRow['id_theme'], date_create($SQLRow['img_Questionnaires']),
-			new SousTheme($SQLRow['nom'], $SQLRow['id_theme']));
+			$QuestionNsub = new Questionnaire($SQLRow['intitule'], $SQLRow['id_theme'], date_create($SQLRow['img_Questionnaires']));
 			
 			$QuestionNsub->setId($SQLRow['id']);
 
@@ -69,4 +68,31 @@
 		$SQLStmt->closeCursor();
 
 		return $questionnairesWithSubTheme;
+	}
+
+	function getAllSubThemeByQuestionnaire(int $idQuestionnaire): array{
+		$conn = getConnexion();
+
+		$SQLQuery = "SELECT  sous_theme.id, sous_theme.nom, sous_theme.id_theme
+		FROM questionnaires
+		INNER JOIN themes ON questionnaires.id_theme = themes.id
+		INNER JOIN sous_theme ON sous_theme.id_theme = themes.id
+		WHERE questionnaires.id = :id";
+
+		$SQLStmt = $conn->prepare($SQLQuery);
+		$SQLStmt->bindValue(':id', $idQuestionnaire, PDO::PARAM_INT);
+		$SQLStmt->execute();
+
+		$subThemes = array();
+		while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
+			$subTheme = new SousTheme($SQLRow['nom'], $SQLRow['id_theme']);
+			
+			$subTheme->setId($SQLRow['id']);
+
+			$subThemes[] = $subTheme;		
+		}
+
+		$SQLStmt->closeCursor();
+
+		return $subThemes;
 	}

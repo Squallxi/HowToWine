@@ -16,64 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `aborder`
---
-
-DROP TABLE IF EXISTS `aborder`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `aborder` (
-  `id_question` int(11) NOT NULL,
-  `id_viticulture` int(11) NOT NULL,
-  `id_elevage` int(11) NOT NULL,
-  `id_vinification` int(11) NOT NULL,
-  KEY `aborder_FK` (`id_question`),
-  KEY `aborder_FK_1` (`id_vinification`),
-  KEY `aborder_FK_2` (`id_elevage`),
-  KEY `aborder_FK_3` (`id_viticulture`),
-  CONSTRAINT `aborder_FK` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`),
-  CONSTRAINT `aborder_FK_1` FOREIGN KEY (`id_vinification`) REFERENCES `vinification` (`id`),
-  CONSTRAINT `aborder_FK_2` FOREIGN KEY (`id_elevage`) REFERENCES `elevage` (`id`),
-  CONSTRAINT `aborder_FK_3` FOREIGN KEY (`id_viticulture`) REFERENCES `viticulture` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `aborder`
---
-
-LOCK TABLES `aborder` WRITE;
-/*!40000 ALTER TABLE `aborder` DISABLE KEYS */;
-/*!40000 ALTER TABLE `aborder` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `associer`
---
-
-DROP TABLE IF EXISTS `associer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `associer` (
-  `id_question` int(11) NOT NULL,
-  `id_reponses` int(11) NOT NULL,
-  KEY `associer_FK` (`id_reponses`),
-  KEY `associer_FK_1` (`id_question`),
-  CONSTRAINT `associer_FK` FOREIGN KEY (`id_reponses`) REFERENCES `reponses` (`id`),
-  CONSTRAINT `associer_FK_1` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `associer`
---
-
-LOCK TABLES `associer` WRITE;
-/*!40000 ALTER TABLE `associer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `associer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `associer_couleur`
 --
 
@@ -98,6 +40,33 @@ LOCK TABLES `associer_couleur` WRITE;
 /*!40000 ALTER TABLE `associer_couleur` DISABLE KEYS */;
 INSERT INTO `associer_couleur` VALUES (9,1),(10,1),(11,1),(12,1),(13,1);
 /*!40000 ALTER TABLE `associer_couleur` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `associer_sousthemencolor`
+--
+
+DROP TABLE IF EXISTS `associer_sousthemencolor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `associer_sousthemencolor` (
+  `id_soustheme` int(11) DEFAULT NULL,
+  `id_couleur` int(11) DEFAULT NULL,
+  KEY `associer_sousthemencolor_FK` (`id_couleur`),
+  KEY `associer_sousthemencolor_FK_1` (`id_soustheme`),
+  CONSTRAINT `associer_sousthemencolor_FK` FOREIGN KEY (`id_couleur`) REFERENCES `couleur` (`id`),
+  CONSTRAINT `associer_sousthemencolor_FK_1` FOREIGN KEY (`id_soustheme`) REFERENCES `sous_theme` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `associer_sousthemencolor`
+--
+
+LOCK TABLES `associer_sousthemencolor` WRITE;
+/*!40000 ALTER TABLE `associer_sousthemencolor` DISABLE KEYS */;
+INSERT INTO `associer_sousthemencolor` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(8,1),(1,2),(2,2),(3,2),(4,2),(5,2),(6,2),(7,2),(8,2),(1,4),(2,4),(3,4),(4,4),(5,4),(6,4),(7,4),(8,4);
+/*!40000 ALTER TABLE `associer_sousthemencolor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -173,10 +142,14 @@ DROP TABLE IF EXISTS `classer`;
 CREATE TABLE `classer` (
   `id_questionnaire` int(11) NOT NULL,
   `id_sous_theme` int(11) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  PRIMARY KEY (`id_questionnaire`,`id_sous_theme`,`id_question`),
   KEY `classer_FK` (`id_questionnaire`),
   KEY `classer_FK_1` (`id_sous_theme`),
+  KEY `classer_FK_2` (`id_question`),
   CONSTRAINT `classer_FK` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaires` (`id`),
-  CONSTRAINT `classer_FK_1` FOREIGN KEY (`id_sous_theme`) REFERENCES `sous_theme` (`id`)
+  CONSTRAINT `classer_FK_1` FOREIGN KEY (`id_sous_theme`) REFERENCES `sous_theme` (`id`),
+  CONSTRAINT `classer_FK_2` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,7 +159,7 @@ CREATE TABLE `classer` (
 
 LOCK TABLES `classer` WRITE;
 /*!40000 ALTER TABLE `classer` DISABLE KEYS */;
-INSERT INTO `classer` VALUES (1,1),(2,1),(3,1),(1,2),(2,2),(3,2),(1,3),(2,3),(3,3),(1,4),(2,4),(3,4),(1,5),(2,5),(3,5),(1,6),(2,6),(3,6),(1,7),(2,7),(3,7),(1,8),(2,8),(3,8);
+INSERT INTO `classer` VALUES (1,1,1),(1,1,2),(1,1,3),(1,1,4),(1,1,5),(1,1,6),(1,1,7),(1,1,8),(1,1,9),(1,1,10),(1,2,1),(1,3,1),(1,4,1),(1,5,1),(1,6,1),(1,7,1),(1,8,1),(2,1,1),(2,1,2),(2,2,1),(2,3,1),(2,4,1),(2,5,1),(2,6,1),(2,7,1),(2,8,1),(3,1,1),(3,2,1),(3,3,1),(3,4,1),(3,5,1),(3,6,1),(3,7,1),(3,8,1);
 /*!40000 ALTER TABLE `classer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,32 +193,6 @@ LOCK TABLES `clones` WRITE;
 /*!40000 ALTER TABLE `clones` DISABLE KEYS */;
 INSERT INTO `clones` VALUES (1,'181','1973','Gironde',1,1),(2,'182','1973','Gironde',1,1),(3,'184','1973','Gironde',1,1),(4,'314','1973','Gironde',1,1),(5,'342','1975','Gironde',1,1),(6,'1125','2009','Gironde',2,4),(7,'1124','2009','Gironde',2,4),(8,'685','1980','Pyrénées-Atlantiques',2,5),(9,'412','1976','Gironde',2,5),(10,'411','1976','Gironde',2,5),(11,'410','1976','Gironde',2,5),(12,'341','1975','Gironde',2,1),(13,'338','1975','Gironde',2,1),(14,'337','1975','Gironde',2,1),(15,'269','1973','Gironde',2,5),(16,'267','1973','Gironde',2,5),(17,'219','1973','Val-de-Loire',2,5),(19,'218','1973','Gironde',2,5),(20,'217','1973','Val-de-Loire',2,5),(21,'216','1973','Val-de-Loire',2,5),(22,'191','1973','Gironde',2,1),(23,'170','1972','Val-de-Loire',2,5),(24,'169','1972','Gironde',2,5),(25,'15','1971','Gironde',2,5);
 /*!40000 ALTER TABLE `clones` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `composer`
---
-
-DROP TABLE IF EXISTS `composer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `composer` (
-  `id_questionnaire` int(11) NOT NULL,
-  `id_question` int(11) NOT NULL,
-  KEY `composer_FK` (`id_questionnaire`),
-  KEY `composer_FK_1` (`id_question`),
-  CONSTRAINT `composer_FK` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaires` (`id`),
-  CONSTRAINT `composer_FK_1` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `composer`
---
-
-LOCK TABLES `composer` WRITE;
-/*!40000 ALTER TABLE `composer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `composer` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -302,6 +249,34 @@ LOCK TABLES `contenants` WRITE;
 /*!40000 ALTER TABLE `contenants` DISABLE KEYS */;
 INSERT INTO `contenants` VALUES (1,12,1,1),(2,32,1,2),(3,69.7,2,4),(4,107,2,5),(5,135,3,3),(6,135,3,1),(7,135,4,2),(8,215,4,1),(9,215,5,2),(10,300,5,1);
 /*!40000 ALTER TABLE `contenants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `correspondre`
+--
+
+DROP TABLE IF EXISTS `correspondre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `correspondre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_intitule` int(11) NOT NULL,
+  `id_reponse` int(11) NOT NULL,
+  `correctOrFalse` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `correspondre_FK` (`id_reponse`),
+  KEY `correspondre_FK_1` (`id_intitule`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `correspondre`
+--
+
+LOCK TABLES `correspondre` WRITE;
+/*!40000 ALTER TABLE `correspondre` DISABLE KEYS */;
+INSERT INTO `correspondre` VALUES (1,1,1,0),(2,1,2,1),(3,1,3,0),(4,1,4,0),(5,2,5,0),(6,2,6,0),(7,2,7,1),(8,2,8,0),(9,3,9,1),(10,3,10,1),(11,3,11,1),(12,3,12,1),(13,4,13,0),(14,4,14,0),(15,4,15,0),(16,4,16,1),(17,5,17,0),(18,5,18,0),(19,5,19,1),(20,5,20,0),(21,6,21,0),(22,6,22,0),(23,6,23,1),(24,6,24,0),(25,7,25,1),(26,7,26,0),(27,7,27,0),(28,7,28,0),(29,8,29,0),(30,8,30,0),(31,8,31,1),(32,8,32,0),(33,9,33,0),(34,9,34,1),(35,9,35,0),(36,9,36,0);
+/*!40000 ALTER TABLE `correspondre` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -640,8 +615,10 @@ DROP TABLE IF EXISTS `question`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `question` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `intitulé` text NOT NULL,
-  PRIMARY KEY (`id`)
+  `intitule` text NOT NULL,
+  `id_soustheme` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `question_FK` (`id_soustheme`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -651,7 +628,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,'<span>Comment apelle-t-on la transformation des sucres en alcool ?</span>'),(2,'<span>Quels sont les organismes responsables de cette transformation ?</span>'),(3,'<span>Quels sont les facteurs importants de décision de récolte ?</span>'),(4,'<span>Remettre en ordre les différentes étapes pré-encuvage ?</span>'),(5,'<span>Pour quel raison foule-t-on le raisin ?</span>'),(6,'<span>Quels sont les principales méthodes mises en place pour démarrer la fermentation alcoolique ?</span>'),(7,'<span>Comment apelle-t-on la deuxième fermentation généralement effectué en rouge ?</span>'),(8,'<span>En quoi consiste les écoulages ?</span>'),(9,'<span>En quoi consiste le soutirage ?</span>'),(10,'<span>Quelle pratique permet en partie d\'éviter les dépots dans la bouteille ?</span>');
+INSERT INTO `question` VALUES (1,'<span>Comment appelle-t-on la transformation des sucres en alcool ?</span>',1),(2,'<span>Quels sont les organismes responsables de cette transformation ?</span>',1),(3,'<span>Quels sont les facteurs importants de décision de récolte ?(plusieurs bonne réponses possibles)</span>',1),(4,'<span>Remettre en ordre les différentes étapes pré-encuvage ?</span>',1),(5,'<span>Pour quel raison foule-t-on le raisin ?</span>',1),(6,'<span>Quels sont les principales méthodes mises en place pour démarrer la fermentation alcoolique ?</span>',1),(7,'<span>Comment apelle-t-on la deuxième fermentation généralement effectué en rouge ?</span>',1),(8,'<span>En quoi consiste les écoulages ?</span>',1),(9,'<span>En quoi consiste le soutirage ?</span>',1),(10,'<span>Quelle pratique permet en partie d\'éviter les dépots dans la bouteille ?</span>',1);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -670,7 +647,7 @@ CREATE TABLE `questionnaires` (
   PRIMARY KEY (`id`),
   KEY `questionnaires_FK` (`id_theme`),
   CONSTRAINT `questionnaires_FK` FOREIGN KEY (`id_theme`) REFERENCES `themes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -679,7 +656,7 @@ CREATE TABLE `questionnaires` (
 
 LOCK TABLES `questionnaires` WRITE;
 /*!40000 ALTER TABLE `questionnaires` DISABLE KEYS */;
-INSERT INTO `questionnaires` VALUES (1,'Questionnaires sur la production de vin rouge',1,'./public/img/kym-ellis.jpg'),(2,'Questionnaires sur la production de vin blanc',1,'./public/img/celina-albertz.jpg'),(3,'Questionnaires sur la production de vin rosé',1,'./public/img/corina-rainer.jpg'),(4,'Questionnaires sur la viticulture',2,'./public/img/maja-petric.jpg'),(5,'Compléter les schémas',NULL,'./public/img/geojango-maps.jpg');
+INSERT INTO `questionnaires` VALUES (1,'La production de vin rouge',1,'./public/img/kym-ellis.jpg'),(2,'La production de vin blanc',1,'./public/img/celina-albertz.jpg'),(3,'La production de vin rosé',1,'./public/img/corina-rainer.jpg'),(4,'La viticulture',2,'./public/img/maja-petric.jpg'),(5,'Compléter les schémas',NULL,'./public/img/geojango-maps.jpg'),(6,'La taille',2,'./public/img/la-taille.jpg');
 /*!40000 ALTER TABLE `questionnaires` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -693,6 +670,7 @@ DROP TABLE IF EXISTS `repondre`;
 CREATE TABLE `repondre` (
   `id_personne` int(11) NOT NULL,
   `id_reponses` int(11) NOT NULL,
+  `bonne_reponse` tinyint(1) NOT NULL,
   KEY `evaluer_FK` (`id_personne`),
   KEY `evaluer_FK_1` (`id_reponses`),
   CONSTRAINT `evaluer_FK` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`),
@@ -718,8 +696,13 @@ DROP TABLE IF EXISTS `reponses`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `reponses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `libelle` text NOT NULL,
+  `bonne_reponse` tinyint(1) NOT NULL,
+  `id_question` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reponses_FK` (`id_question`),
+  CONSTRAINT `reponses_FK` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -728,6 +711,7 @@ CREATE TABLE `reponses` (
 
 LOCK TABLES `reponses` WRITE;
 /*!40000 ALTER TABLE `reponses` DISABLE KEYS */;
+INSERT INTO `reponses` VALUES (1,'La fermentation malolactique',0,1),(2,'La fermentation alcoolique',1,1),(3,'La fermentation acétique',0,1),(4,'La fermentation lactique',0,1),(5,'Les bactéries lactiques',0,2),(6,'Les bactéries acétiques',0,2),(7,'Les levures',1,2),(8,'Les anthocyanes',0,2),(9,'Les prévisions météorologiques',1,3),(10,'Le style de vin',1,3),(11,'Le niveau de maturité',1,3),(12,'La dégustation de baie',1,3),(13,'Améliorer l\'extraction',1,5),(14,'Diminuer l\'acidité',0,5),(15,'Aérer le jus',0,5),(16,'Enlever la pellicule',0,5),(17,'Un \"pied de cuve\"',1,6),(18,'Diminuer la température du moût',0,6),(19,'L\'ensemencement de LSA',1,6),(20,'Le sulfitage',0,6),(21,'La fermentation alcoolique',0,7),(22,'La fermentation acétique',0,7),(23,'La fermentation malolactique',1,7),(24,'La fermentation lactique',0,7),(25,'Séparer le moût des parties solides',1,8),(26,'Jeter les parties solides et ne garder que le vin de goutte',0,8),(27,'Mettre des levures supplémentaire',0,8),(28,'Sulfiter abondement',0,8),(29,'Remettre en suspension les lies',0,9),(30,'Ne garder que les lies',0,9),(31,'Séparer les lies du vin \"clair\"',1,9),(32,'Permettre d\'éviter le collage',0,9),(33,'Le sulfitage',0,10),(34,'Le collage',1,10),(35,'La pasteurisation',0,10),(36,'La macération post-fermentaire',0,10);
 /*!40000 ALTER TABLE `reponses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -942,4 +926,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-17 17:19:06
+-- Dump completed on 2023-02-23 16:59:08
