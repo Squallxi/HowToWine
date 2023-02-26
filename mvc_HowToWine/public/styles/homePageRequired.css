@@ -1,0 +1,4 @@
+@import url("globalCss/globalRequired.css");
+@import url("partialsCss/static_elements/allStatic_elements.css");
+@import url("partialsCss/menu_element.css");
+@import url("partialsCss/cardLeftRightLeft_element.css");

@@ -1,27 +1,28 @@
 <?php 
-    foreach ($lesThemes as $unTheme){
-        if($unTheme->getId()%2){
+
+    foreach ($themes as $theme){
+        if($theme->getId()%2){
             print('<div class="main_cards">');
                 print('<div class="card_LogoTheme">');
-                    print('<img class="logoTheme" src="' . $unTheme->getLogoTheme() . '">');
+                    print('<img class="logoTheme" src="' . $theme->getLogoTheme() . '">');
                 print('</div>');
                 print('<div class="card_TitleLeft">');
-                    print('<h3>'.$unTheme->getName().'</h3>');
+                    print('<h3>'.$theme->getName().'</h3>');
                 print('</div>');
                 print('<div class="cardContent">');
-                    print('<p>'.$unTheme->getContenu().'</p>');
+                    print('<p>'.$theme->getContent().'</p>');
                 print('</div>');
             print('</div>'); 
         }else{
             print('<div id="main_card" class="main_cards">');
                 print('<div class="card_LogoTheme">');
-                    print('<img class="logoTheme" src="'.$unTheme->getLogoTheme().'"></img>');
+                    print('<img class="logoTheme" src="'.$theme->getLogoTheme().'"></img>');
                 print('</div>');
                 print('<div class="card_TitleRight">');
-                    print('<h3>'.$unTheme->getName().'</h3>');
+                    print('<h3>'.$theme->getName().'</h3>');
                 print('</div>');
                 print('<div class="cardContent">');
-                    print('<p>'.$unTheme->getContenu().'</p>');
+                    print('<p>'.$theme->getContent().'</p>');
                 print('</div>');
             print('</div>');  
         }  

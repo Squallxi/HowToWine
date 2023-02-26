@@ -1,11 +1,11 @@
 <div class="resetMenu" id="demiCercle">
     <?php 
     $i = 1;
-    foreach ($lesNiveaux as $unNiveau){
-        print('<div name="btcircle" id="cercle'.$i.'"><span class="chooseMenu">'.$unNiveau->getName().'</span>');
+    foreach ($levels as $level){
+        print('<div name="btcircle" id="cercle'.$i.'"><span class="chooseMenu">'.$level->getName().'</span>');
             print('<div class="content'.$i++.'">');
                 print('<div class="cancelBox"><div class="cancel"></div></div>');
-                print('<p>'.$unNiveau->getContenu().'</p>');
+                print('<p>'.$level->getContent().'</p>');
                 print('<button class="menuBtn">Parcourir...</button>');
             print('</div>');
         print('</div>');    

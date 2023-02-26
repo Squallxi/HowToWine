@@ -2,43 +2,32 @@
 
     switch($action){
         case 'amateur':{
-            require_once "includes/core/dao/daoChapitre.php";
-            require_once "includes/core/dao/daoLecon.php";
+            require_once "includes/core/models/dao/daoChapter.php";
+            require_once "includes/core/models/dao/daoLesson.php";
             require_once "includes/core/function/main_photoToPage.php";
 
-            $lesChapitres = getOenoChapters_LvlOne();
-            $lesLecons = getAllLecons();
+            $chapters = getOenoChapters_LvlOne();
+            $lessons = getAllLessons();
 
-            require_once "includes/core/views/chapitres.phtml";
+            require_once "includes/core/views/view_lessons.phtml";
             break;
         }
         case 'etudiant':{
-            require_once "includes/core/dao/daoChapitre.php";
+            require_once "includes/core/models/dao/daoChapter.php";
             require_once "includes/core/function/main_photoToPage.php";
 
-            $lesChapitres = getOenoChapters_LvlTwo();
+            $chapters = getOenoChapters_LvlTwo();
 
-            require_once "includes/core/views/chapitres.phtml";
+            require_once "includes/core/views/view_lessons.phtml";
             break;
         }
         case 'professionnel':{
-            require_once "includes/core/dao/daoChapitre.php";
+            require_once "includes/core/models/dao/daoChapter.php";
             require_once "includes/core/function/main_photoToPage.php";
 
-            $lesChapitres = getOenoChapters_LvlThree();
+            $chapters = getOenoChapters_LvlThree();
 
-            require_once "includes/core/views/chapitres.phtml";
-            break;
-        }
-        case 'exercice':{
-            // require_once "includes/core/dao/daoExercices.php";
-            require_once "includes/core/function/main_photoToPage.php";
-            require_once "includes/core/dao/daoLecon.php";
-
-            // $lesExercices = getOenoExercices();
-            $lesLecons = getAllLecons();
-
-            require_once "includes/core/views/exercices.phtml";
+            require_once "includes/core/views/view_lessons.phtml";
             break;
         }
         default:{

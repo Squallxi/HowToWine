@@ -1,0 +1,38 @@
+<?php
+	ini_set('display_errors', 'on');
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require "includes/partials/head_page.phtml"; ?>
+    <link rel="stylesheet" href="public/styles/lessonsPageRequired.css">
+</head>
+<body>
+    <header id="main_header">
+        <div class="container">
+            <?php require "includes/partials/nav_element.phtml"; ?>
+        </div>
+    </header>
+    <main>
+        <div id="<?= setIdByPage($page)?>"></div>
+        <section id="Lecon">
+            <div class="container_text">
+                <?php
+                foreach($chapters as $chapter){
+                    print($chapter->getChapter());
+                    print($chapter->getContent());
+                }
+                
+                ?>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <?php require "includes/partials/footer_element.phtml" ?>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript"src="public/scripts/nav_element.js"></script>
+
+</html>

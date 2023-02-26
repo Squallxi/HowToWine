@@ -4,19 +4,19 @@
 <div id="main_headerBottom">
     <div id="main_headerLogoBox">
         <a id="homeLink"href="index.php?page=index"><span id="homeText">Accueil</span></a>
-        <img id="mainLogo" src="public/img/logo how to wine.png" alt="logo du site">
+        <img id="mainLogo" src="public/img/logo_how_to_wine.png" alt="logo du site">
     </div>
     <nav>
         <ul id="main_nav">
             <?php 
-                foreach ($lesLecons as $uneLecon){
-                    print('<li><a href="#">'.$uneLecon->getTitre().'</a>');
+                foreach ($lessons as $lesson){
+                    print('<li><a href="#">'.$lesson->getTitle().'</a>');
                         print('<ul>');
-                        if($uneLecon->getTitre() == 'Œnologie'){
+                        if($lesson->getTitle() == 'Œnologie'){
                             print('<li><a href="index.php?page=oenologie&action=amateur">niveau Amateur</a></li>');
                             print('<li><a href="index.php?page=oenologie&action=etudiant">niveau Étudiant</a></li>');
                             print('<li><a href="index.php?page=oenologie&action=professionnel">niveau Professionnel</a></li>');
-                        }else if($uneLecon->getTitre() == 'Viticulture'){
+                        }else if($lesson->getTitle() == 'Viticulture'){
                             print('<li><a href="index.php?page=viticulture&action=amateur">niveau Amateur</a></li>');
                             print('<li><a href="index.php?page=viticulture&action=etudiant">niveau Étudiant</a></li>');
                             print('<li><a href="index.php?page=viticulture&action=professionnel">niveau Professionnel</a></li>'); 

@@ -1,17 +1,17 @@
 <?php
 $i = 1;
 $j = 1;
-foreach($lesQuestions as $uneQuestion){
+foreach($questions as $question){
 print('<div class="numberQuestion">');
     print('<h3>Question n°'.$i++.'<h3>');
 print('</div>');
-print('<h4>'.$uneQuestion->getIntitule().'</h4>');
+print('<h4>'.$question->getEntitled().'</h4>');
 print('<div id="answerBox">');
-    foreach ($uneQuestion->getReponses() as $uneReponse){
-        print('<div class="reponseBoite"id="reponse'.$uneReponse->getIdReponse().'">');
+    foreach ($question->getAnswers() as $answer){
+        print('<div class="reponseBoite"id="reponse'.$answer->getId().'">');
             print('<div id="chooseBox">');
                 print('<input type="checkbox" id="checkbox-button-opt-'.$j.'" name="checkbox-option" class="hide-checkbox">');
-                print('<label class="checkLabel"for="checkbox-button-opt-'.$j++.'"><div>'.$uneReponse->getLibelleReponse().'</div>');
+                print('<label class="checkLabel"for="checkbox-button-opt-'.$j++.'"><div>'.$answer->getContent().'</div>');
             print('</div>');
         print('</div>');
     }
@@ -21,6 +21,3 @@ print('<div id="submitButton">');
 print('<button type="submit">Voir les résultats</button>');
 print('<button type="reset">Réinitialiser</button>');
 print('</div>');
-// print('<div id="submitButton">');
-// print('<button type="reset">Réinitialiser</button>');
-// print('</div>');

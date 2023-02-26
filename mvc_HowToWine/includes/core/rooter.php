@@ -13,11 +13,11 @@
             break;
         }
         case 'listExo':{
-            require_once "includes/core/controllers/controller_exercices.php";
+            require_once "includes/core/controllers/controller_quizzies.php";
             break;
         }
         case 'question':{
-            require_once "includes/core/controllers/controller_question.php";
+            require_once "includes/core/controllers/controller_quiz.php";
             break;
         }
         default:{

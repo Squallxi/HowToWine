@@ -1,15 +1,15 @@
 <?php
 print('<h2 class="ExoTheme">Thème de l\'œnologie</h2>');
 print('<section id="exercicesList">');
-foreach ($lesQuestionnaires as $unQuestionnaire){
-    if($unQuestionnaire->getIdTheme()== 1){
+foreach ($quizzies as $quiz){
+    if($quiz->getIdTheme()== 1){
         print('<div class="card_questionnaire">');
             print('<div class="card_content">');
                 print('<div class="card_imgBox">');
-                    print('<img class="card_img" src="' . $unQuestionnaire->getImgQuestionnaire() . '">');
+                    print('<img class="card_img" src="' . $quiz->getQuizImg() . '">');
                 print('</div>');
                 print('<div class="card_intitule">');
-                    print('<span>'.$unQuestionnaire->getIntituleQuestionnaire().'</span>');
+                    print('<span>'.$quiz->getEntitled().'</span>');
                 print('</div>');
                 print('<div class="card_buttonBox">');
                     print('<button class="card_button">Commencer -></button>');
@@ -21,10 +21,10 @@ foreach ($lesQuestionnaires as $unQuestionnaire){
                     print('<th>Commencer</th>');
                 print('</thead>');
                 print('<tbody>');
-            foreach($unQuestionnaire->getSousThemes() as $unSousTheme){
+            foreach($quiz->getSubThemes() as $subTheme){
                     print('<tr>');
-                        print('<td>'.$unSousTheme->getName().'</td>');
-                        print('<td><a href="index.php?page=question&action=consulter&idsoustheme='.$unSousTheme->getId().'&idquestionnaire='.$unQuestionnaire->getId().'">-></a></td>');
+                        print('<td>'.$subTheme->getName().'</td>');
+                        print('<td><a href="index.php?page=question&action=consulter&idsoustheme='.$subTheme->getId().'&idquestionnaire='.$quiz->getId().'">-></a></td>');
                     print('</tr>');
                     }
                 print('</tbody>');

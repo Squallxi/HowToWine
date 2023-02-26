@@ -1,11 +1,11 @@
 <?php
-    require_once "includes/core/dao/daoNiveau.php";
-    require_once "includes/core/dao/daoTheme.php";
-    require_once "includes/core/dao/daoLecon.php";
+    require_once "includes/core/models/dao/daoLevel.php";
+    require_once "includes/core/models/dao/daoTheme.php";
+    require_once "includes/core/models/dao/daoLesson.php";
     require_once "includes/core/function/main_photoToPage.php";
 
-    $lesNiveaux = getAllNiveaux();
-    $lesThemes = getAllThemes();
-    $lesLecons = getAllLecons();
+    $levels = getAllLevels();
+    $themes = getAllThemes();
+    $lessons = getAllLessons();
     
-    require_once "includes/core/views/view.phtml";
+    require_once "includes/core/views/view_homePage.phtml";

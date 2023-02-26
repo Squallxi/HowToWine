@@ -59,5 +59,42 @@ A faire plus tard :
 -intégrer les remarques à la fin de chaque chapitre pour guider l'utilisateur vers un autre niveau s'il veux en apprendre plus sur un étape d'élaboration.
 
 
+26/02/2023 : Ajout et modification depuis le 14/02
+
+
+- Page d'accueil terminé pour le moment.
+
+
+- Le cas Leçon d'oenologie pour amateur terminé pour le moment.
+
+
+- Page liste des questionnaires terminé pour le moment.
+
+
+- Modif au niveau de la conception du site : les quiz ne seront orienté que pour le niveau étudiant et plus.
+
+
+- Pour le moment un seul questionnaire dans le cas Questionnaire production de vin rouge - sous thème La récolte.
+
+
+A faire pour la semaine du 27/02/2023 au 05/03/2023 : 
+
+
+- Permettre aux utilisateurs de créer un compte, s'authentifier et répondre au premier questionnaire.
+
+
+- S'assurer que les valeurs sélectionné par l'utilisateur s'enregistre bien dans la base de donnée.
+
+
+- Comparé et actualiser le profil de l'utilisateur en fonction des réponses au questionnaire.
+
+
+A faire plus tard : 
+
+
+- Dans chaque leçon, surligner les mots importants et les rendres clickable pour rediriger vers une leçon sur le sujet.
+
+
+
 
 
