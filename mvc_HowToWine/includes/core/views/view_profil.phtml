@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <?php require "includes/partials/head_element.phtml"; ?>
-    <link rel="stylesheet" href="public/styles/homePageRequired.css">
+    <link rel="stylesheet" href="public/styles/profilPage.css">
 </head>
 <body>
     <header id="main_header">
@@ -14,14 +14,10 @@
         </div>
     </header>
     <main>
-        <div id="<?= setIdByPage($page)?>"></div>
-        <section id="main_siteInfo">
-            <div class="container">
-                <div>
-                    <?php require "includes/partials/menu_element.phtml"; ?>
-                </div>
-                <div class="gridLeftRightLeft">
-                    <?php require "includes/partials/cardLeftRightLeft_element.phtml"; ?>
+        <section id="profil">
+            <div class="container_text">
+                <div id="profilContainer">
+                    <?php require "includes/partials/profil_element.phtml"; ?>
                 </div>
             </div>
         </section>
@@ -33,6 +29,5 @@
     </footer>
 </body>
 <script type="text/javascript"src="public/scripts/nav_element.js"></script>
-<script type="text/javascript"src="public/scripts/index_menu.js"></script>
-<script type="text/javascript"src="public/scripts/card_element.js"></script>
+<script type="text/javascript"src="public/scripts/frm_question.js"></script>
 </html>

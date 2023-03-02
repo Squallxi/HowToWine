@@ -77,16 +77,16 @@ A faire plus tard :
 - Pour le moment un seul questionnaire dans le cas Questionnaire production de vin rouge - sous thème La récolte.
 
 
-A faire pour la semaine du 27/02/2023 au 05/03/2023 : 
+A faire pour la semaine du 27/02/2023 au 05/03/2023(maj le 02/03/2023): 
 
 
-- Permettre aux utilisateurs de créer un compte, s'authentifier et répondre au premier questionnaire.
+- Permettre aux utilisateurs de créer un compte, s'authentifier et répondre au premier questionnaire. OK
 
 
-- S'assurer que les valeurs sélectionné par l'utilisateur s'enregistre bien dans la base de donnée.
+- S'assurer que les valeurs sélectionné par l'utilisateur s'enregistre bien dans la base de donnée. OK
 
 
-- Comparé et actualiser le profil de l'utilisateur en fonction des réponses au questionnaire.
+- Comparé et actualiser le profil de l'utilisateur en fonction des réponses au questionnaire. EN COURS
 
 
 A faire plus tard : 

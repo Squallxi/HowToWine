@@ -70,6 +70,31 @@ INSERT INTO `associer_sousthemencolor` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `avatar`
+--
+
+DROP TABLE IF EXISTS `avatar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `avatar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `balise_img` varchar(250) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `avatar`
+--
+
+LOCK TABLES `avatar` WRITE;
+/*!40000 ALTER TABLE `avatar` DISABLE KEYS */;
+INSERT INTO `avatar` VALUES (1,'<img src=\"public\\img\\wineMen.png\">','./public/img/wineMen.png'),(2,'<img src=\"public\\img\\wineWomen.png\">','./public/img/wineWomen.png');
+/*!40000 ALTER TABLE `avatar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cepage`
 --
 
@@ -249,34 +274,6 @@ LOCK TABLES `contenants` WRITE;
 /*!40000 ALTER TABLE `contenants` DISABLE KEYS */;
 INSERT INTO `contenants` VALUES (1,12,1,1),(2,32,1,2),(3,69.7,2,4),(4,107,2,5),(5,135,3,3),(6,135,3,1),(7,135,4,2),(8,215,4,1),(9,215,5,2),(10,300,5,1);
 /*!40000 ALTER TABLE `contenants` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `correspondre`
---
-
-DROP TABLE IF EXISTS `correspondre`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `correspondre` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_intitule` int(11) NOT NULL,
-  `id_reponse` int(11) NOT NULL,
-  `correctOrFalse` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `correspondre_FK` (`id_reponse`),
-  KEY `correspondre_FK_1` (`id_intitule`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `correspondre`
---
-
-LOCK TABLES `correspondre` WRITE;
-/*!40000 ALTER TABLE `correspondre` DISABLE KEYS */;
-INSERT INTO `correspondre` VALUES (1,1,1,0),(2,1,2,1),(3,1,3,0),(4,1,4,0),(5,2,5,0),(6,2,6,0),(7,2,7,1),(8,2,8,0),(9,3,9,1),(10,3,10,1),(11,3,11,1),(12,3,12,1),(13,4,13,0),(14,4,14,0),(15,4,15,0),(16,4,16,1),(17,5,17,0),(18,5,18,0),(19,5,19,1),(20,5,20,0),(21,6,21,0),(22,6,22,0),(23,6,23,1),(24,6,24,0),(25,7,25,1),(26,7,26,0),(27,7,27,0),(28,7,28,0),(29,8,29,0),(30,8,30,0),(31,8,31,1),(32,8,32,0),(33,9,33,0),(34,9,34,1),(35,9,35,0),(36,9,36,0);
-/*!40000 ALTER TABLE `correspondre` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -593,8 +590,14 @@ CREATE TABLE `personne` (
   `email` varchar(100) NOT NULL,
   `photo_profil` varchar(250) DEFAULT NULL,
   `mot_de_passe` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_avatar` int(11) DEFAULT NULL,
+  `id_titre` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `personne_FK` (`id_avatar`),
+  KEY `personne_FK_1` (`id_titre`),
+  CONSTRAINT `personne_FK` FOREIGN KEY (`id_avatar`) REFERENCES `avatar` (`id`),
+  CONSTRAINT `personne_FK_1` FOREIGN KEY (`id_titre`) REFERENCES `titre` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -603,6 +606,7 @@ CREATE TABLE `personne` (
 
 LOCK TABLES `personne` WRITE;
 /*!40000 ALTER TABLE `personne` DISABLE KEYS */;
+INSERT INTO `personne` VALUES (5,'Squall','durandmickael33@yahoo.fr','./public/img/wineMen.png','123',NULL,1),(7,'a','durandmickael33@yahoo.fr','./public/img/wineMen.png','123',NULL,1);
 /*!40000 ALTER TABLE `personne` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -628,7 +632,7 @@ CREATE TABLE `question` (
 
 LOCK TABLES `question` WRITE;
 /*!40000 ALTER TABLE `question` DISABLE KEYS */;
-INSERT INTO `question` VALUES (1,'<span>Comment appelle-t-on la transformation des sucres en alcool ?</span>',1),(2,'<span>Quels sont les organismes responsables de cette transformation ?</span>',1),(3,'<span>Quels sont les facteurs importants de décision de récolte ?(plusieurs bonne réponses possibles)</span>',1),(4,'<span>Remettre en ordre les différentes étapes pré-encuvage ?</span>',1),(5,'<span>Pour quel raison foule-t-on le raisin ?</span>',1),(6,'<span>Quels sont les principales méthodes mises en place pour démarrer la fermentation alcoolique ?</span>',1),(7,'<span>Comment apelle-t-on la deuxième fermentation généralement effectué en rouge ?</span>',1),(8,'<span>En quoi consiste les écoulages ?</span>',1),(9,'<span>En quoi consiste le soutirage ?</span>',1),(10,'<span>Quelle pratique permet en partie d\'éviter les dépots dans la bouteille ?</span>',1);
+INSERT INTO `question` VALUES (1,'<span>Comment appelle-t-on la transformation des sucres en alcool ?</span>',1),(2,'<span>Quels sont les organismes responsables de cette transformation ?</span>',1),(3,'<span>Quels sont les facteurs importants de décision de récolte ?(plusieurs bonne réponses possibles)</span>',1),(4,'<span>Pourquoi sulfite-t-on les vins ?</span>',1),(5,'<span>Pour quel raison foule-t-on le raisin ?</span>',1),(6,'<span>Quels sont les principales méthodes mises en place pour démarrer la fermentation alcoolique ?</span>',1),(7,'<span>Comment apelle-t-on la deuxième fermentation généralement effectué en rouge ?</span>',1),(8,'<span>En quoi consiste les écoulages ?</span>',1),(9,'<span>En quoi consiste le soutirage ?</span>',1),(10,'<span>Quelle pratique permet en partie d\'éviter les dépôts dans la bouteille ?</span>',1);
 /*!40000 ALTER TABLE `question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -670,7 +674,6 @@ DROP TABLE IF EXISTS `repondre`;
 CREATE TABLE `repondre` (
   `id_personne` int(11) NOT NULL,
   `id_reponses` int(11) NOT NULL,
-  `bonne_reponse` tinyint(1) NOT NULL,
   KEY `evaluer_FK` (`id_personne`),
   KEY `evaluer_FK_1` (`id_reponses`),
   CONSTRAINT `evaluer_FK` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`),
@@ -684,6 +687,7 @@ CREATE TABLE `repondre` (
 
 LOCK TABLES `repondre` WRITE;
 /*!40000 ALTER TABLE `repondre` DISABLE KEYS */;
+INSERT INTO `repondre` VALUES (5,34),(5,34);
 /*!40000 ALTER TABLE `repondre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -702,7 +706,7 @@ CREATE TABLE `reponses` (
   PRIMARY KEY (`id`),
   KEY `reponses_FK` (`id_question`),
   CONSTRAINT `reponses_FK` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -711,7 +715,7 @@ CREATE TABLE `reponses` (
 
 LOCK TABLES `reponses` WRITE;
 /*!40000 ALTER TABLE `reponses` DISABLE KEYS */;
-INSERT INTO `reponses` VALUES (1,'La fermentation malolactique',0,1),(2,'La fermentation alcoolique',1,1),(3,'La fermentation acétique',0,1),(4,'La fermentation lactique',0,1),(5,'Les bactéries lactiques',0,2),(6,'Les bactéries acétiques',0,2),(7,'Les levures',1,2),(8,'Les anthocyanes',0,2),(9,'Les prévisions météorologiques',1,3),(10,'Le style de vin',1,3),(11,'Le niveau de maturité',1,3),(12,'La dégustation de baie',1,3),(13,'Améliorer l\'extraction',1,5),(14,'Diminuer l\'acidité',0,5),(15,'Aérer le jus',0,5),(16,'Enlever la pellicule',0,5),(17,'Un \"pied de cuve\"',1,6),(18,'Diminuer la température du moût',0,6),(19,'L\'ensemencement de LSA',1,6),(20,'Le sulfitage',0,6),(21,'La fermentation alcoolique',0,7),(22,'La fermentation acétique',0,7),(23,'La fermentation malolactique',1,7),(24,'La fermentation lactique',0,7),(25,'Séparer le moût des parties solides',1,8),(26,'Jeter les parties solides et ne garder que le vin de goutte',0,8),(27,'Mettre des levures supplémentaire',0,8),(28,'Sulfiter abondement',0,8),(29,'Remettre en suspension les lies',0,9),(30,'Ne garder que les lies',0,9),(31,'Séparer les lies du vin \"clair\"',1,9),(32,'Permettre d\'éviter le collage',0,9),(33,'Le sulfitage',0,10),(34,'Le collage',1,10),(35,'La pasteurisation',0,10),(36,'La macération post-fermentaire',0,10);
+INSERT INTO `reponses` VALUES (1,'La fermentation malolactique',0,1),(2,'La fermentation alcoolique',1,1),(3,'La fermentation acétique',0,1),(4,'La fermentation lactique',0,1),(5,'Les bactéries lactiques',0,2),(6,'Les bactéries acétiques',0,2),(7,'Les levures',1,2),(8,'Les anthocyanes',0,2),(9,'Les prévisions météorologiques',1,3),(10,'Le style de vin',1,3),(11,'Le niveau de maturité',1,3),(12,'La dégustation de baie',1,3),(13,'Améliorer l\'extraction',1,5),(14,'Diminuer l\'acidité',0,5),(15,'Aérer le jus',0,5),(16,'Enlever la pellicule',0,5),(17,'Un \"pied de cuve\"',1,6),(18,'Diminuer la température du moût',0,6),(19,'L\'ensemencement de LSA',1,6),(20,'Le sulfitage',0,6),(21,'La fermentation alcoolique',0,7),(22,'La fermentation acétique',0,7),(23,'La fermentation malolactique',1,7),(24,'La fermentation lactique',0,7),(25,'Séparer le moût des parties solides',1,8),(26,'Jeter les parties solides et ne garder que le vin de goutte',0,8),(27,'Mettre des levures supplémentaire',0,8),(28,'Sulfiter abondement',0,8),(29,'Remettre en suspension les lies',0,9),(30,'Ne garder que les lies',0,9),(31,'Séparer les lies du vin \"clair\"',1,9),(32,'Permettre d\'éviter le collage',0,9),(33,'Le sulfitage',0,10),(34,'Le collage',1,10),(35,'La pasteurisation',0,10),(36,'La macération post-fermentaire',0,10),(37,'Pour protéger le vin',1,4),(38,'Pour améliorer le côté gustatif',0,4),(39,'Pour améliorer la couleur du vin',0,4),(40,'Pour acidifié le vin',0,4);
 /*!40000 ALTER TABLE `reponses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -822,6 +826,31 @@ INSERT INTO `themes` VALUES (1,' Thème de l\'Œnologie','Du début des vendange
 UNLOCK TABLES;
 
 --
+-- Table structure for table `titre`
+--
+
+DROP TABLE IF EXISTS `titre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `titre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) NOT NULL,
+  `prerequis` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `titre`
+--
+
+LOCK TABLES `titre` WRITE;
+/*!40000 ALTER TABLE `titre` DISABLE KEYS */;
+INSERT INTO `titre` VALUES (1,'Amateur','Titre attribué par defaut'),(2,'Vigneron','A répondu correctement à tout les questionnaire de viticulture de niveau amateur'),(3,'Chef de culture','A répondu correctement à tout les questionnaire de viticulture de niveau étudiant'),(4,'Maître de chai','A répondu correctement à tout les questionnaire de œnologie de niveau amateur'),(5,'Œnologue','A répondu correctement à tout les questionnaire de œnologie de niveau étudiant'),(6,'Celui-qui-goûte','A répondu correctement à tout les questionnaire de dégustation de niveau amateur'),(7,'Maître tailleur','A répondu correctement à tout les sous thème du questionnaire de taille'),(8,'Master of HowToWine','A répondu correctement à tout les questionnaires du site HowToWine');
+/*!40000 ALTER TABLE `titre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `vin`
 --
 
@@ -926,4 +955,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-26 18:50:41
+-- Dump completed on 2023-03-02 16:55:49

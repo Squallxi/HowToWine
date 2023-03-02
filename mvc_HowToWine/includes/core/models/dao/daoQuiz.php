@@ -1,5 +1,4 @@
 <?php 
-
     require_once "includes/core/models/bdd.php";
 	require_once "includes/core/models/class/Quiz.php";
 	require_once "includes/core/models/class/SubTheme.php";

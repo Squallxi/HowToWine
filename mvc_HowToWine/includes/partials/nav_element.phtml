@@ -1,5 +1,28 @@
 <div id="main_headerTop">
+        <?php 
+            if (isset($_SESSION['login']) && $_SESSION['login'] != ''){
+                print('<div class="loginBoxes"><a href="index.php?page=frm_user&action=profil">Mon profil</a></div>');
+                print('<div class="loginBoxes"><a href="index.php?page=frm_user&action=logout">Déconnexion</a></div>');
 
+            }else{
+                print('<a class="connexionBtn" href="index.php?page=frm_user&action=enregistrer"><div>S&apos;inscrire</div></a>');
+                print('<div class="connexionBtn" id="showModal">Se connecter</div>');
+                print('<div id="myModal" class="modal">');
+                    print('<form id="formAuth"action="index.php?page=frm_user&action=login" method="post">');
+                        print('<span class="close"></span>');
+                        print('<div>');
+                            print('<label for="chPseudo">Pseudo</label>');
+                            print('<input name="champLogin" type="text" placeholder="Votre pseudo...">');
+                        print('</div>');
+                        print('<div>');
+                            print('<label for="chMdp">Mot de passe</label>');
+                            print('<input name="champMdp" type="password" placeholder="Votre mot de passe...">');
+                        print('</div>');
+                        print('<div><button type="submit">Connexion</button></div>');
+                    print('</form>');
+                print('</div>');
+            }
+        ?>
 </div>
 <div id="main_headerBottom">
     <div id="main_headerLogoBox">

@@ -1,0 +1,45 @@
+<div id="frmInscriptionContent">
+    <h1>Formulaire d'inscription</h1>
+    <form action="" method="post">
+        <p>Les champs avec <abbr title="(obligatoire)" aria-hidden="true">*</abbr> sont obligatoires.</p>
+        <div class="labelNinputBox">
+			<label for="chPseudo">Pseudo : </label>
+			<input type="text" name="champLogin" id="chPseudo" value="">
+		</div>
+        <div class="labelNinputBox">
+			<label for="chMail">Adresse Email : </label>
+			<input type="email" name="champMail" id="chMail" value="">
+		</div>
+		<div>
+			<label for="chAvatar">Sélectionner un avatar </label>
+			<div id="avatarBox">
+				<?php
+				$j=1;
+				foreach($avatars as $avatar){
+					print('<div class="reponseBoite"id="reponse'.$avatar->getId().'">');
+            			print('<div id="chooseBox">');
+            	    		print('<input type="radio" id="checkbox-button-opt-'.$j.'" name="champPath" class="hide-checkbox" value="'.$avatar->getPath().'">');
+            	    		print('<label class="checkLabel"for="checkbox-button-opt-'.$j++.'"><div id="avatarList">'.$avatar->getBaliseImg().'</div>');
+            			print('</div>');
+        			print('</div>');	
+				}
+				?>
+			</div>
+		</div>
+		<div class="labelNinputBox">
+			<label for="chMdp">Mot de passe : </label>
+			<input type="password" name="champMdp" id="chMdp" value="">
+		</div>
+        <div class="labelNinputBox">
+			<label for="chVerifyMdp">Entrez à nouveau votre mot de passe : </label>
+			<input type="password" name="champVerifyMdp" id="chVerifyMdp" value="">
+		</div>
+		<div>
+			<button class="frmInscriptionBtn" type="submit">Créer mon compte</button>
+			<button class="frmInscriptionBtn"type="reset">Réinitialiser</button>
+		</div>
+    </form>
+	<?= $message ?? '' ?> 
+</div>
+<div id="imgFrm_inscription"></div>
+

@@ -1,5 +1,3 @@
-@import url("reset.css");
-@import url("variable.css");
 .footer{
     background-color: blanchedalmond;
 }
@@ -20,10 +18,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.footer_logoBox{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 .allRights{
     background-color: blanchedalmond;

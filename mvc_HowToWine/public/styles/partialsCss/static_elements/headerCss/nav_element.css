@@ -1,11 +1,38 @@
-@import url("variable.css");
 a{
     font-size: var(--subTitle-size);
     text-decoration: none;
     color: var(--color-white);
 }
+#main_headerTop{
+    display: flex;
+    justify-content: flex-end;
+}
+.connexionBtn{
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    display: inline-block;
+    position: relative;
+    color: #800033;
+    
+}
+.connexionBtn::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #800033;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.connexionBtn:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
 #main_headerBottom{
-    height: 10rem;
+    height: 8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,7 +47,7 @@ a{
     position: absolute;
     top: -72px;
     left: 0;
-    transition-duration: 0.3s;   
+    transition-duration: 0.3s;
 }
 #main_headerLogoBox:hover > #mainLogo{
     animation: spin 1s linear forwards, moveLeftToRight 1s linear forwards;
@@ -158,3 +185,52 @@ nav{
     0%   { left: 0px; }
     100% { left: 100%; }
 }
+
+/* Css de la modal de connexion */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 3rem;
+    right: 0;
+    top: 0;
+    width: 100VW;
+    height: 100VH;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: TRANSPARENT;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #formAuth{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+  }
+
+  .loginBoxes{
+    margin-right: 2rem;
+  }

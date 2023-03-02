@@ -1,6 +1,4 @@
-@import url("reset.css");
-@import url("variable.css");
-@import url("keyframe.css");
+
 
 
 .gridLeftRightLeft{
@@ -13,7 +11,6 @@
     align-items: center;
          
 }
-
 .gridLeftRightLeft :nth-child(1){
     grid-area: 1 / 1 / 2 / 2;
     justify-self: center;    

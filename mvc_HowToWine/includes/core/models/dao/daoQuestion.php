@@ -16,7 +16,7 @@
 		$questions = array();
 		while ($SQLRow = $SQLStmt->fetch(PDO::FETCH_ASSOC)){
 			$question = new Question($SQLRow['intitule']);			
-			$question->setIdQuestion($SQLRow['id']);
+			$question->setId($SQLRow['id']);
 			$questions[] = $question;		
 		}
 

@@ -10,14 +10,10 @@ print('<div id="answerBox">');
     foreach ($question->getAnswers() as $answer){
         print('<div class="reponseBoite"id="reponse'.$answer->getId().'">');
             print('<div id="chooseBox">');
-                print('<input type="checkbox" id="checkbox-button-opt-'.$j.'" name="checkbox-option" class="hide-checkbox">');
+                print('<input type="checkbox" id="checkbox-button-opt-'.$j.'" name="checkbox-option[]" class="hide-checkbox" data-value="'.$answer->getGoodAnwser().'" value="'.$answer->getId().'">');
                 print('<label class="checkLabel"for="checkbox-button-opt-'.$j++.'"><div>'.$answer->getContent().'</div>');
             print('</div>');
         print('</div>');
     }
 print('</div>');
 }
-print('<div id="submitButton">');
-print('<button type="submit">Voir les résultats</button>');
-print('<button type="reset">Réinitialiser</button>');
-print('</div>');

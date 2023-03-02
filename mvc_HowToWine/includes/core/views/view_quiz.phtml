@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require "includes/partials/head_page.phtml"; ?>
+    <?php require "includes/partials/head_element.phtml"; ?>
     <link rel="stylesheet" href="public/styles/quizPageRequired.css">
    
 </head>
@@ -17,8 +17,18 @@
     <main>
         <div id="<?= setIdByPage($page)?>"></div>
         <div class="container_question">
-            <form action="">
+            <form action="index.php?page=question&action=repondre&idsoustheme=<?=$idSubTheme?>&idquestionnaire=<?=$idQuiz?>" method="post">
                 <?php require "includes/partials/frm_question.phtml"; ?>
+                <div id="submitButton">
+                    <?php
+                        if (isset($_SESSION['login']) && $_SESSION['login'] != ''){
+                            print('<button type="submit">Voir les résultats</button>');
+                        }else{
+                            print('<button id="getNote" type="button">Voir les résultats</button>');
+                        }
+                        ?>
+                    <button type="reset">Réinitialiser</button>
+                </div>
             </form>
         </div>
     </main>

@@ -1,0 +1,112 @@
+#imgFrm_inscription{
+    box-shadow: 0px 10px 5px #888;
+    background-image: url("../../img/jonathan-farber.jpg");
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+    filter: grayscale(40%);
+    width: 30vw;
+    height: 70vh;
+}
+
+#frmInscriptionBox{
+    DISPLAY: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+#frmInscriptionContent{
+    margin: 5rem;
+}
+h1{
+    margin: 1rem;
+}
+p{
+    margin-bottom: 2rem;
+}
+.labelNinputBox{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+label{
+    font-size: 1rem;
+    color: #6c6c6c;
+    margin-bottom: 2rem;
+}
+label::before{
+    content: "*";
+    color: red;
+}
+input{
+    height: 2rem;
+    font-size: 1.5rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: solid 1px grey;
+}
+.frmInscriptionBtn{
+    background-color: var(--color-primary);
+    width: 8rem;
+    height: 2rem;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+}
+abbr{
+    color: red;
+    text-decoration: none;
+}
+
+
+/* Disposition des avatars */
+
+#avatarBox{
+    display: flex;
+}
+
+.reponseBoite{
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    flex-direction: column;
+    border-radius: 5px;
+    margin: 2px;
+    justify-self: center;
+    width: 20rem;
+}
+
+.chooseBox{
+    justify-content: center;
+    display: flex;
+}
+
+.hide-checkbox + label {
+    display: block;
+    float: left;
+    width: 100%;
+    padding: 2px 0;
+    text-align: center;
+    border-radius: 15px;
+    font-family: 'Oswald', sans-serif;
+    color: #fff;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -o-transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+    user-select: none;
+    }
+     
+.hide-checkbox:checked + label {
+    display: inline-block;
+    border: solid 2px #800033;
+}
+
+#avatarList img{
+    border-radius: 50%;
+    width: 10rem;
+}
+
+

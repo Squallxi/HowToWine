@@ -4,7 +4,7 @@
 		private int $id;
 		private string $pseudo, $email, $photoProfil, $password;
 
-		public function __construct(string $pseudo = '', string $email = '', string $photoProfil, string $password){
+		public function __construct(string $pseudo = '', string $email = '', string $photoProfil = '', string $password =''){
 				$this->id = 0;
 				$this->pseudo = $pseudo;
 				$this->email = $email;
