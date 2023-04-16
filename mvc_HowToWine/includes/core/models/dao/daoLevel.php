@@ -2,7 +2,7 @@
 
     require_once "includes/core/models/bdd.php";
 	require_once "includes/core/models/class/Level.php";
-	//Récupération des données de la table Niveau dans la bdd
+
     function getAllLevels(): array{
 		$conn = getConnexion();
 

@@ -2,7 +2,7 @@
 
     require_once "includes/core/models/bdd.php";
 	require_once "includes/core/models/class/Avatar.php";
-	//Récupération des données de la table Niveau dans la bdd
+	
     function getAllAvatar(): array{
 		$conn = getConnexion();
 

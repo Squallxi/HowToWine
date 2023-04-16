@@ -2,7 +2,6 @@
 
     require_once "includes/core/models/bdd.php";
 	require_once "includes/core/models/class/Theme.php";
-	//Récupération des données de la table Niveau dans la bdd
     function getAllThemes(): array{
 		$conn = getConnexion();
 

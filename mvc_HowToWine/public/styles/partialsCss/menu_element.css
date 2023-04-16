@@ -1,7 +1,11 @@
-
+h2{
+    margin-top: 2rem;
+    text-align: center;
+    user-select: none;
+}
 
 .resetMenu{
-    display: none;
+    display: block;
 }
 #demiCercle{
     position: relative;
@@ -150,4 +154,28 @@ p{
 .disappearByDisplay{
     animation: fromLeft 1s ease 0s 1 normal forwards;
     display: none;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1300px) {
+    #demiCercle {
+        width: 22rem;
+    }
+    span{
+        width: 10rem;
+    }
+    #cercle1 {
+        left: 17rem;
+    }
+    #cercle2 {
+        left: 20.5rem;
+    }
+    #cercle3 {
+        left: 17rem;
+    }
 }

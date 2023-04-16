@@ -1,6 +1,3 @@
-<?php
-	ini_set('display_errors', 'on');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +11,12 @@
         </div>
     </header>
     <main>
-        <div id="<?= setIdByPage($page)?>"></div>
+        <div id="<?= setIdByPage($page)?>"><h1 id="welcome">Bienvenu sur HowToWine</h1></div>
         <section id="main_siteInfo">
             <div class="container">
-                <div>
-                    <?php require "includes/partials/menu_element.phtml"; ?>
-                </div>
+                <h2>Paufiné vos connaissances sur l'élaboration des vins avec les différents niveaux proposé</h2>
+
+                <?php require "includes/partials/menu_element.phtml"; ?>
                 <div class="gridLeftRightLeft">
                     <?php require "includes/partials/cardLeftRightLeft_element.phtml"; ?>
                 </div>
@@ -32,6 +29,7 @@
         </div>
     </footer>
 </body>
+<script type="text/javascript"src="public/scripts/menu_burger.js"></script>
 <script type="text/javascript"src="public/scripts/nav_element.js"></script>
 <script type="text/javascript"src="public/scripts/index_menu.js"></script>
 <script type="text/javascript"src="public/scripts/card_element.js"></script>

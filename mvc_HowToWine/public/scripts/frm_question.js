@@ -9,9 +9,8 @@ const validWhithoutAccount = document.getElementById('getNote');
     });
 
 
-console.log(validWhithoutAccount);
 let note = 0;
-let howManyGoodAnswer = 0;
+let howManyGoodAnswer = 1;
 
 checkbox.forEach(function(input){
     if(input.getAttribute("data-value") == 1){
@@ -25,12 +24,9 @@ validWhithoutAccount.addEventListener('click', function(){
             note++;
         }
     });
-    console.log(note);
     const noteBox = document.createElement("div");
-    let noteBoxContent = document.createTextNode('Votre note est de ' + note + howManyGoodAnswer);
+    let noteBoxContent = document.createTextNode('Votre note est de ' + note + ' / ' + howManyGoodAnswer);
     noteBox.appendChild(noteBoxContent);
     submitBox.appendChild(noteBox);
 });
-
-console.log(note);
 

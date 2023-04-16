@@ -1,7 +1,6 @@
 <?php
     switch($action){
         case 'consulter':{
-            var_dump($_POST);
             $idSubTheme = $_GET['idsoustheme'] ?? 0;
             $idQuiz = $_GET['idquestionnaire'] ?? 0;
             require_once "includes/core/models/dao/daoQuestion.php";
@@ -14,7 +13,6 @@
                     $question->setAnswers(getAllAnswersByQuestion($question->getId()));
                 }
             }
-
             $lessons = getAllLessons();
             require_once "includes/core/views/view_quiz.phtml";
             break;
@@ -24,22 +22,34 @@
             require_once "includes/core/models/dao/daoPerson.php";
             require_once "includes/core/models/dao/daoLesson.php";
 
-            // Je doit récuperer les infos
             $idSubTheme = $_GET['idsoustheme'] ?? 0;
             $idQuiz = $_GET['idquestionnaire'] ?? 0;
             $idPersonne = $_SESSION['iduser'];
 
             if (!empty($_POST)){
-                foreach($_POST['checkbox-option'] as $option){
-                    $unResultat = new Respond(
-                        $idPersonne, $option
-                    );
-                    updateRespond($unResultat);
-                }
+            //potentielle correction à apporter sur les deux 0 plus bas pour rendre le code dynamique
+            $AlreadyDone = new Respond(
+                0,
+                0,
+                $idSubTheme,
+                $idQuiz
+            );
+            if (respondExists($AlreadyDone)){
+                DeleteOldRespond($AlreadyDone);
+            }
+            foreach($_POST['checkbox-option'] as $option){
+                $unResultat = new Respond(
+                    $idPersonne, 
+                    $option,
+                    $idSubTheme,
+                    $idQuiz
+                );
+            addNewRespond($unResultat);
+            }
+            header('Location: ?page=frm_user&action=profil');    
             }
             $lessons = getAllLessons();
             require_once "includes/core/views/view_quiz.phtml";
-
             break;
         }
         default: {           

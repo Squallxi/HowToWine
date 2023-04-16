@@ -589,15 +589,12 @@ CREATE TABLE `personne` (
   `pseudo` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `photo_profil` varchar(250) DEFAULT NULL,
-  `mot_de_passe` varchar(20) NOT NULL,
-  `id_avatar` int(11) DEFAULT NULL,
+  `mot_de_passe` varchar(250) NOT NULL,
   `id_titre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `personne_FK` (`id_avatar`),
   KEY `personne_FK_1` (`id_titre`),
-  CONSTRAINT `personne_FK` FOREIGN KEY (`id_avatar`) REFERENCES `avatar` (`id`),
   CONSTRAINT `personne_FK_1` FOREIGN KEY (`id_titre`) REFERENCES `titre` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -606,7 +603,7 @@ CREATE TABLE `personne` (
 
 LOCK TABLES `personne` WRITE;
 /*!40000 ALTER TABLE `personne` DISABLE KEYS */;
-INSERT INTO `personne` VALUES (5,'Squall','durandmickael33@yahoo.fr','./public/img/wineMen.png','123',NULL,1),(7,'a','durandmickael33@yahoo.fr','./public/img/wineMen.png','123',NULL,1);
+INSERT INTO `personne` VALUES (6,'micka','durandmickael33@yahoo.fr','./public/img/wineMen.png','$argon2id$v=19$m=65536,t=4,p=1$eUl5ODlOQVk1RVBNZ2wySw$MY8KTc9XKgTB56tx3arzc76M2J7X+bMDdTe1+dKvI2c',NULL);
 /*!40000 ALTER TABLE `personne` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -674,10 +671,17 @@ DROP TABLE IF EXISTS `repondre`;
 CREATE TABLE `repondre` (
   `id_personne` int(11) NOT NULL,
   `id_reponses` int(11) NOT NULL,
+  `id_soustheme` int(11) NOT NULL,
+  `id_questionnaire` int(11) NOT NULL,
+  PRIMARY KEY (`id_personne`,`id_reponses`,`id_soustheme`,`id_questionnaire`),
   KEY `evaluer_FK` (`id_personne`),
   KEY `evaluer_FK_1` (`id_reponses`),
+  KEY `repondre_FK_1` (`id_soustheme`),
+  KEY `repondre_FK_2` (`id_questionnaire`),
   CONSTRAINT `evaluer_FK` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id`),
-  CONSTRAINT `repondre_FK` FOREIGN KEY (`id_reponses`) REFERENCES `reponses` (`id`)
+  CONSTRAINT `repondre_FK` FOREIGN KEY (`id_reponses`) REFERENCES `reponses` (`id`),
+  CONSTRAINT `repondre_FK_1` FOREIGN KEY (`id_soustheme`) REFERENCES `sous_theme` (`id`),
+  CONSTRAINT `repondre_FK_2` FOREIGN KEY (`id_questionnaire`) REFERENCES `questionnaires` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -687,7 +691,7 @@ CREATE TABLE `repondre` (
 
 LOCK TABLES `repondre` WRITE;
 /*!40000 ALTER TABLE `repondre` DISABLE KEYS */;
-INSERT INTO `repondre` VALUES (5,34),(5,34);
+INSERT INTO `repondre` VALUES (6,2,1,1),(6,7,1,1),(6,9,1,1),(6,10,1,1),(6,11,1,1),(6,12,1,1),(6,13,1,1),(6,17,1,1),(6,19,1,1),(6,23,1,1),(6,25,1,1),(6,31,1,1),(6,34,1,1),(6,37,1,1);
 /*!40000 ALTER TABLE `repondre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -846,7 +850,7 @@ CREATE TABLE `titre` (
 
 LOCK TABLES `titre` WRITE;
 /*!40000 ALTER TABLE `titre` DISABLE KEYS */;
-INSERT INTO `titre` VALUES (1,'Amateur','Titre attribué par defaut'),(2,'Vigneron','A répondu correctement à tout les questionnaire de viticulture de niveau amateur'),(3,'Chef de culture','A répondu correctement à tout les questionnaire de viticulture de niveau étudiant'),(4,'Maître de chai','A répondu correctement à tout les questionnaire de œnologie de niveau amateur'),(5,'Œnologue','A répondu correctement à tout les questionnaire de œnologie de niveau étudiant'),(6,'Celui-qui-goûte','A répondu correctement à tout les questionnaire de dégustation de niveau amateur'),(7,'Maître tailleur','A répondu correctement à tout les sous thème du questionnaire de taille'),(8,'Master of HowToWine','A répondu correctement à tout les questionnaires du site HowToWine');
+INSERT INTO `titre` VALUES (1,'Amateur de vin','Titre attribué par defaut'),(2,'Vigneron','A répondu correctement à tout les questionnaire de viticulture de niveau amateur'),(3,'Chef de culture','A répondu correctement à tout les questionnaire de viticulture de niveau étudiant'),(4,'Maître de chai','A répondu correctement à tout les questionnaire de œnologie de niveau amateur'),(5,'Œnologue','A répondu correctement à tout les questionnaire de œnologie de niveau étudiant'),(6,'Celui-qui-goûte','A répondu correctement à tout les questionnaire de dégustation de niveau amateur'),(7,'Maître tailleur','A répondu correctement à tout les sous thème du questionnaire de taille'),(8,'Master of HowToWine','A répondu correctement à tout les questionnaires du site HowToWine');
 /*!40000 ALTER TABLE `titre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -955,4 +959,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-02 16:55:49
+-- Dump completed on 2023-04-16 20:41:03

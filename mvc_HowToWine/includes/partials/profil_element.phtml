@@ -2,21 +2,38 @@
     <div id="headerProfil">
         <div id="headerLeft">
             <div id="titleBox">
-                <h1 id="titleAchievement"></h1><button id="editTitle">Modifier</button>
+                <?php
+                    print('<span id="titleAchievement">'.$informationsProfil->getTitre()->getName().'</span><button class="editButton" id="editTitle">Modifier</button>');    
+                ?>
             </div>
-            <div id="avatarBox"><img src="" alt=""></div>
-            <button id="editAvatar">Modifier</button>
+            <div id="avatarBox">
+                <?php
+                    print('<img id="avatar" src="'.$informationsProfil->getPhotoProfil().'" alt="photo de profil">');    
+                ?>
+            </div>
         </div>
         <div id="headerRight">
-        <span>Compte crée le :</span>
-        <span>Pseudo :</span>
-        <span>Adresse mail : </span><button id="editMail">Modifier</button>
+        <!-- <span>Compte crée le :</span> -->
+        <?php
+            print('<span>Pseudo : '.$informationsProfil->getPseudo().'</span><button class="editButton" id="editPseudo">Modifier</button>'); 
+            print('<span>Adresse mail : '.$informationsProfil->getEmail().'</span><button class="editButton" id="editMail">Modifier</button>');     
+        ?>
         </div>
     </div>
     <div id="bodyProfil">
-        <p>Vous avez répondu à :</p>
-        <p>x questionnaire sur x en Oeonologie</p>
-        <p>x questionnaire sur x en Viticulture</p>
-        <p>x questionnaire sur x en Dégustation</p>
+        <p>Votre progression actuelle :</p>
+        <?php
+        foreach($answersProfil as $oneAnswer){
+                print('<div>'); 
+                print('<span>Nom du questionnaire : '.$oneAnswer['NomQuestionnaire'].'<span>'); 
+                print('</div>');  
+                print('<div>'); 
+                print('<span>Sous-thème : '.$oneAnswer['NomSousTheme'].'<span>'); 
+                print('</div>'); 
+                print('<div>'); 
+                print('<span>Nombre de points obtenu : '.$oneAnswer['points'].'<span>'); 
+                print('</div>'); 
+        }          
+        ?>
     </div>
 </div>

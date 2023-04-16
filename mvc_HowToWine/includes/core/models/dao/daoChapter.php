@@ -2,7 +2,7 @@
 
     require_once "includes/core/models/bdd.php";
 	require_once "includes/core/models/class/Chapter.php";
-	//Récupération des données de la table Chapitre dans la bdd
+	
     function getAllChapter(): array{
 		$conn = getConnexion();
 

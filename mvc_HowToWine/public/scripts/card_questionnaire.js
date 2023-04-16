@@ -1,8 +1,6 @@
 const cards = document.querySelectorAll('.card_questionnaire');
 const buttons = document.querySelectorAll('.card_button');
-const SubThemeTabler = document.querySelector('.consulter_subTheme')
-console.log(cards);
-
+const SubThemeTabler = document.querySelector('.consulter_subTheme');
 
 buttons.forEach(function(button){
     button.addEventListener('click', function(event){

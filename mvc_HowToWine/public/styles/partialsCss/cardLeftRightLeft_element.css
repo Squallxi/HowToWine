@@ -67,3 +67,18 @@
     opacity: 1;
 }
       
+
+@media screen and (max-width: 1300px) {
+    .gridLeftRightLeft{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+    }
+    .main_cards {
+        width: 80vw;
+        margin:0;
+    }
+}
+

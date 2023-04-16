@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 'on');
     require_once "includes/core/function/main_photoToPage.php";
     require_once "includes/core/models/dao/daoLesson.php";
     require_once "includes/core/models/dao/daoQuiz.php";

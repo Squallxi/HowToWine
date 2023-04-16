@@ -40,3 +40,11 @@ i{
 a{
     color: #800033;
 }
+
+@media screen and (max-width: 1300px) {
+    .footer_listAbout{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}

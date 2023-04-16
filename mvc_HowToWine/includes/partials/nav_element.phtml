@@ -1,3 +1,5 @@
+
+<!-- MENU DE CONNEXION -->
 <div id="main_headerTop">
         <?php 
             if (isset($_SESSION['login']) && $_SESSION['login'] != ''){
@@ -10,45 +12,46 @@
                 print('<div id="myModal" class="modal">');
                     print('<form id="formAuth"action="index.php?page=frm_user&action=login" method="post">');
                         print('<span class="close"></span>');
-                        print('<div>');
-                            print('<label for="chPseudo">Pseudo</label>');
-                            print('<input name="champLogin" type="text" placeholder="Votre pseudo...">');
+                        print('<div class="inputBox">');
+                            print('<label class="labelHeader" for="chPseudo">Pseudo</label>');
+                            print('<input class="inputHeader" name="champLogin" type="text" placeholder="Votre pseudo...">');
                         print('</div>');
-                        print('<div>');
-                            print('<label for="chMdp">Mot de passe</label>');
-                            print('<input name="champMdp" type="password" placeholder="Votre mot de passe...">');
+                        print('<div class="inputBox">');
+                            print('<label class="labelHeader" for="chMdp">Mot de passe</label>');
+                            print('<input class="inputHeader" name="champMdp" type="password" placeholder="Votre mot de passe...">');
                         print('</div>');
-                        print('<div><button type="submit">Connexion</button></div>');
+                        print('<div><button id="buttonHeader" type="submit">Connexion</button></div>');
                     print('</form>');
                 print('</div>');
             }
         ?>
 </div>
+
+<!-- LOGO + LIEN VERS ACCUEIL -->
 <div id="main_headerBottom">
     <div id="main_headerLogoBox">
-        <a id="homeLink"href="index.php?page=index"><span id="homeText">Accueil</span></a>
-        <img id="mainLogo" src="public/img/logo_how_to_wine.png" alt="logo du site">
+        <a id="homeLinkTinyScreen"href="index.php?page=index"><img id="mainLogo" src="public/img/logo_how_to_wine.png" alt="logo du site"></a>
     </div>
-    <nav>
+<!-- NAVIGATION FORMAT DESKTOP -->
+    <nav id="hugeScreen">
         <ul id="main_nav">
             <?php 
                 foreach ($lessons as $lesson){
                     print('<li><a href="#">'.$lesson->getTitle().'</a>');
                         print('<ul>');
                         if($lesson->getTitle() == 'Œnologie'){
-                            print('<li><a href="index.php?page=oenologie&action=amateur">niveau Amateur</a></li>');
-                            print('<li><a href="index.php?page=oenologie&action=etudiant">niveau Étudiant</a></li>');
-                            print('<li><a href="index.php?page=oenologie&action=professionnel">niveau Professionnel</a></li>');
+                            print('<li><a href="index.php?page=oenologie&action=amateur">Amateur</a></li>');
+                            print('<li><a href="index.php?page=progress">Étudiant</a></li>');
+                            print('<li><a href="index.php?page=progress">Professionnel</a></li>');
                         }else if($lesson->getTitle() == 'Viticulture'){
-                            print('<li><a href="index.php?page=viticulture&action=amateur">niveau Amateur</a></li>');
-                            print('<li><a href="index.php?page=viticulture&action=etudiant">niveau Étudiant</a></li>');
-                            print('<li><a href="index.php?page=viticulture&action=professionnel">niveau Professionnel</a></li>'); 
+                            print('<li><a href="index.php?page=progress">Amateur</a></li>');
+                            print('<li><a href="index.php?page=progress">Étudiant</a></li>');
+                            print('<li><a href="index.php?page=progress">Professionnel</a></li>'); 
                         }else{
-                            print('<li><a href="index.php?page=degustation&action=amateur">niveau Amateur</a></li>');
-                            print('<li><a href="index.php?page=degustation&action=etudiant">niveau Étudiant</a></li>');
-                            print('<li><a href="index.php?page=degustation&action=professionnel">niveau Professionnel</a></li>');
+                            print('<li><a href="index.php?page=progress">Amateur</a></li>');
+                            print('<li><a href="index.php?page=progress">Étudiant</a></li>');
+                            print('<li><a href="index.php?page=progress">Professionnel</a></li>');
                         }
-
                         print('</ul>');
                     print('</li>');    
                 }
@@ -56,6 +59,43 @@
             ?>
         </ul>
     </nav>
+</div>
+<!-- NAVIGATION FORMAT MOBILE + MENU BURGER -->
+<div id="MobileScreen">
+    <nav id="mySidenav" class="sidenav">
+        <a id="closeBtn" href="#" class="close">&times;</a>
+        <ul>
+            <?php 
+                foreach ($lessons as $lesson){
+                    print('<li><a href="#"><h2 class="mobileSizeTitle">'.$lesson->getTitle().'</h2></a>');
+                        print('<ul>');
+                        if($lesson->getTitle() == 'Œnologie'){
+                            print('<li><a href="index.php?page=oenologie&action=amateur"><span class="mobileSize">Amateur</span></a></li>');
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Étudiant</span></a></li>');
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Professionnel</span></a></li>');
+                        }else if($lesson->getTitle() == 'Viticulture'){
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Amateur</span></a></li>');
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Étudiant</span></a></li>');
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Professionnel</span></a></li>'); 
+                        }else{
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Amateur</span></a></li>');
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Étudiant</span></a></li>');
+                            print('<li><a href="index.php?page=progress"><span class="mobileSize">Professionnel</span></a></li>');
+                        }
+                        print('</ul>');
+                    print('</li>');    
+                }
+                print('<li><a href="index.php?page=listExo"><h2 class="mobileSizeTitle">Exercices</h2></a></li>');
+            ?>
+        </ul>
+    </nav>
+    <a href="#" id="openBtn">
+        <span class="burger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </a>
 </div>
 
 

@@ -95,6 +95,23 @@ A faire plus tard :
 - Dans chaque leçon, surligner les mots importants et les rendres clickable pour rediriger vers une leçon sur le sujet.
 
 
+Travail Accompli au 16/04/2023: 
+
+
+- La boucle complète (Inscription, Connexion, Consulter la leçon "Oenologie" niveau "amateur", Consulter le questionnaire "la production de vin rouge" avec le sous-thème "La récolte", Répondre au questionnaire à l'aide des checkbox puis valider, Reçevoir et afficher le résultat dans le profil de l'utilisateur) fonctionne.
+
+
+- Des ajustements sont nécessaire pour retirer les valeurs écritent en brut dans le code : daoPerson.php ligne 80, controller_quiz.php ligne 33 et 34, controller_frmUser.php ligne 55.
+
+
+A faire plus tard : 
+
+
+- Dans chaque leçon, surligner les mots importants et les rendres clickable pour rediriger vers une leçon sur le sujet.
+
+
+-Continuer d'alimenter la base de donnée.
+
 
 
 

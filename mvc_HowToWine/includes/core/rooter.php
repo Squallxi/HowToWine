@@ -1,8 +1,10 @@
 <?php
+    // crée une session ou restaure celle trouvée sur le serveur, via l'identifiant de session passé dans une requête GET, POST ou par un cookie
     session_start();
     $page = $_GET['page'] ?? 'index';
     $action = $_GET['action'] ?? 'view';
    
+    // Switch permettant l'utilisation d'un controller en fonction des cas du page= dans l'url
     switch ($page){
         case 'index':{
             require_once "includes/core/controllers/controller.php";
@@ -22,6 +24,10 @@
         }
         case 'frm_user':{
             require_once "includes/core/controllers/controller_frmUser.php";
+            break;
+        }
+        case 'progress':{
+            require_once "includes/core/controllers/controller_workInProgress.php";
             break;
         }
         default:{

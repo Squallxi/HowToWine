@@ -1,6 +1,6 @@
 <?php
 	function getConnexion(){
-		// Etape 1 : la connexion
+		// Information de connexion de la bdd
 		$server = 'localhost';
 		$port = '3306';
 		$dbname = 'howtowine';

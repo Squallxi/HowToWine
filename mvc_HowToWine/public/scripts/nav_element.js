@@ -1,4 +1,3 @@
-
 let modal = document.getElementById("myModal");
 
 // Get the button that opens the modal

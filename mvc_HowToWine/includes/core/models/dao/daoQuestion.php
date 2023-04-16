@@ -28,10 +28,11 @@
 	function getAllQuestionsForQuiz(int $idSubTheme, int $idQuiz){
 		$conn = getConnexion();
 
-    	$SQLQuery = "select question.id, intitule
-			from question inner join classer on question.id = classer.id_question
-			where classer.id_sous_theme = :idsstheme
-				and classer.id_questionnaire = :idquestionnaire";
+    	$SQLQuery = "SELECT question.id, intitule
+			FROM question 
+			INNER JOIN classer ON question.id = classer.id_question
+			WHERE classer.id_sous_theme = :idsstheme
+			AND classer.id_questionnaire = :idquestionnaire";
 
 		$SQLStmt = $conn->prepare($SQLQuery);
 		$SQLStmt->bindValue(':idsstheme', $idSubTheme, PDO::PARAM_INT);

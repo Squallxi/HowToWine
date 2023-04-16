@@ -21,6 +21,10 @@
                 print'main_photoExo';
                 break;
             }
+            case'progress':{
+                print'main_photoProgress';
+                break;
+            }
             default:{
                 print'main_photoHome';
             }

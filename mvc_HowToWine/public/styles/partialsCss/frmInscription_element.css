@@ -109,4 +109,12 @@ abbr{
     width: 10rem;
 }
 
+@media screen and (max-width: 1300px) {
+    #avatarBox {
+        flex-direction: column;
+    }
+    #imgFrm_inscription {
+        display: none;
+    }
+}
 

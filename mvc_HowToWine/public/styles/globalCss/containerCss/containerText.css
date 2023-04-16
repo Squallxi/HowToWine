@@ -1,7 +1,7 @@
 .container_text {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 2.5rem 1.5rem;
+    padding: 2.5rem 3rem;
   }
   .container_question {
     max-width: var(--max-width);
@@ -32,4 +32,19 @@ ul{
 }
 li{
     list-style-type: none;
+}
+
+@media screen and (max-width: 1300px) {
+     
+}
+
+@media screen and (max-width: 650px) {
+    .container_question {
+      padding: 2.5rem 0rem;
+    }
+    .container_text img{
+        width: 100%;
+        border-radius: 30px;
+        margin: 10px;
+    }
 }
